@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  BaseViewController.swift
 //  SouqTask
 //
 //  Created by Ma'moun Diraneyya on 2/21/16.
@@ -8,11 +8,12 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class BaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +21,4 @@ class FirstViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
 }
-

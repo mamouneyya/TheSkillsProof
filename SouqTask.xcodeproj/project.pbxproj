@@ -7,14 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B9125DC01C7A593D0058E1D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9125DBF1C7A593D0058E1D7 /* AppDelegate.swift */; };
-		B9125DC21C7A593D0058E1D7 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9125DC11C7A593D0058E1D7 /* FirstViewController.swift */; };
-		B9125DC41C7A593D0058E1D7 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9125DC31C7A593D0058E1D7 /* SecondViewController.swift */; };
-		B9125DC71C7A593D0058E1D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9125DC51C7A593D0058E1D7 /* Main.storyboard */; };
-		B9125DC91C7A593D0058E1D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9125DC81C7A593D0058E1D7 /* Assets.xcassets */; };
-		B9125DCC1C7A593D0058E1D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9125DCA1C7A593D0058E1D7 /* LaunchScreen.storyboard */; };
 		B9125DD71C7A593D0058E1D7 /* SouqTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9125DD61C7A593D0058E1D7 /* SouqTaskTests.swift */; };
 		B9125DE21C7A593D0058E1D7 /* SouqTaskUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9125DE11C7A593D0058E1D7 /* SouqTaskUITests.swift */; };
+		B9125DFE1C7A5D360058E1D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9125DF01C7A5D360058E1D7 /* AppDelegate.swift */; };
+		B9125E001C7A5D360058E1D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9125DF61C7A5D360058E1D7 /* LaunchScreen.storyboard */; };
+		B9125E011C7A5D360058E1D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9125DF81C7A5D360058E1D7 /* Main.storyboard */; };
+		B9125E051C7A5D730058E1D7 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9125E041C7A5D730058E1D7 /* BaseViewController.swift */; };
+		B9125E0A1C7A5E5A0058E1D7 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9125E091C7A5E5A0058E1D7 /* BaseTableViewController.swift */; };
+		B9125E0C1C7A5E660058E1D7 /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9125E0B1C7A5E660058E1D7 /* BaseCollectionViewController.swift */; };
+		B9125E0E1C7A5F010058E1D7 /* ProductsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9125E0D1C7A5F010058E1D7 /* ProductsCollectionViewController.swift */; };
+		B9125E111C7A5F4E0058E1D7 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9125E101C7A5F4E0058E1D7 /* FavoritesTableViewController.swift */; };
+		B9125E171C7A61B50058E1D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9125E161C7A61B50058E1D7 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,19 +39,22 @@
 
 /* Begin PBXFileReference section */
 		B9125DBC1C7A593D0058E1D7 /* SouqTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SouqTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B9125DBF1C7A593D0058E1D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B9125DC11C7A593D0058E1D7 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		B9125DC31C7A593D0058E1D7 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
-		B9125DC61C7A593D0058E1D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B9125DC81C7A593D0058E1D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B9125DCB1C7A593D0058E1D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		B9125DCD1C7A593D0058E1D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9125DD21C7A593D0058E1D7 /* SouqTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SouqTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9125DD61C7A593D0058E1D7 /* SouqTaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SouqTaskTests.swift; sourceTree = "<group>"; };
 		B9125DD81C7A593D0058E1D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9125DDD1C7A593D0058E1D7 /* SouqTaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SouqTaskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9125DE11C7A593D0058E1D7 /* SouqTaskUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SouqTaskUITests.swift; sourceTree = "<group>"; };
 		B9125DE31C7A593D0058E1D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9125DF01C7A5D360058E1D7 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B9125DF11C7A5D360058E1D7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9125DF71C7A5D360058E1D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B9125DF91C7A5D360058E1D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B9125E041C7A5D730058E1D7 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = Bases/BaseViewController.swift; sourceTree = "<group>"; };
+		B9125E091C7A5E5A0058E1D7 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseTableViewController.swift; path = Bases/BaseTableViewController.swift; sourceTree = "<group>"; };
+		B9125E0B1C7A5E660058E1D7 /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseCollectionViewController.swift; path = Bases/BaseCollectionViewController.swift; sourceTree = "<group>"; };
+		B9125E0D1C7A5F010058E1D7 /* ProductsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductsCollectionViewController.swift; path = Products/ProductsCollectionViewController.swift; sourceTree = "<group>"; };
+		B9125E101C7A5F4E0058E1D7 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritesTableViewController.swift; path = Favorites/FavoritesTableViewController.swift; sourceTree = "<group>"; };
+		B9125E161C7A61B50058E1D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +105,12 @@
 		B9125DBE1C7A593D0058E1D7 /* SouqTask */ = {
 			isa = PBXGroup;
 			children = (
-				B9125DBF1C7A593D0058E1D7 /* AppDelegate.swift */,
-				B9125DC11C7A593D0058E1D7 /* FirstViewController.swift */,
-				B9125DC31C7A593D0058E1D7 /* SecondViewController.swift */,
-				B9125DC51C7A593D0058E1D7 /* Main.storyboard */,
-				B9125DC81C7A593D0058E1D7 /* Assets.xcassets */,
-				B9125DCA1C7A593D0058E1D7 /* LaunchScreen.storyboard */,
-				B9125DCD1C7A593D0058E1D7 /* Info.plist */,
+				B9125DF81C7A5D360058E1D7 /* Main.storyboard */,
+				B9125DEF1C7A5D360058E1D7 /* Application */,
+				B9125E031C7A5D4B0058E1D7 /* MVC */,
+				B9125DF51C7A5D360058E1D7 /* Resources */,
+				B9125DF31C7A5D360058E1D7 /* Helpers */,
+				B9125DFC1C7A5D360058E1D7 /* Vendors */,
 			);
 			path = SouqTask;
 			sourceTree = "<group>";
@@ -126,6 +131,114 @@
 				B9125DE31C7A593D0058E1D7 /* Info.plist */,
 			);
 			path = SouqTaskUITests;
+			sourceTree = "<group>";
+		};
+		B9125DEF1C7A5D360058E1D7 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				B9125DF01C7A5D360058E1D7 /* AppDelegate.swift */,
+				B9125DF11C7A5D360058E1D7 /* Info.plist */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		B9125DF21C7A5D360058E1D7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B9125E061C7A5D790058E1D7 /* Bases */,
+				B9125E0F1C7A5F070058E1D7 /* Products */,
+				B9125E121C7A5F520058E1D7 /* Favorites */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B9125DF31C7A5D360058E1D7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		B9125DF41C7A5D360058E1D7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B9125DF51C7A5D360058E1D7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B9125DFA1C7A5D360058E1D7 /* Images */,
+				B9125E131C7A5F7B0058E1D7 /* Other */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B9125DFA1C7A5D360058E1D7 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				B9125E161C7A61B50058E1D7 /* Assets.xcassets */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		B9125DFC1C7A5D360058E1D7 /* Vendors */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Vendors;
+			sourceTree = "<group>";
+		};
+		B9125DFD1C7A5D360058E1D7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B9125E031C7A5D4B0058E1D7 /* MVC */ = {
+			isa = PBXGroup;
+			children = (
+				B9125DF41C7A5D360058E1D7 /* Models */,
+				B9125DFD1C7A5D360058E1D7 /* Views */,
+				B9125DF21C7A5D360058E1D7 /* Controllers */,
+			);
+			name = MVC;
+			sourceTree = "<group>";
+		};
+		B9125E061C7A5D790058E1D7 /* Bases */ = {
+			isa = PBXGroup;
+			children = (
+				B9125E041C7A5D730058E1D7 /* BaseViewController.swift */,
+				B9125E091C7A5E5A0058E1D7 /* BaseTableViewController.swift */,
+				B9125E0B1C7A5E660058E1D7 /* BaseCollectionViewController.swift */,
+			);
+			name = Bases;
+			sourceTree = "<group>";
+		};
+		B9125E0F1C7A5F070058E1D7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B9125E0D1C7A5F010058E1D7 /* ProductsCollectionViewController.swift */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B9125E121C7A5F520058E1D7 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				B9125E101C7A5F4E0058E1D7 /* FavoritesTableViewController.swift */,
+			);
+			name = Favorites;
+			sourceTree = "<group>";
+		};
+		B9125E131C7A5F7B0058E1D7 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				B9125DF61C7A5D360058E1D7 /* LaunchScreen.storyboard */,
+			);
+			name = Other;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,9 +345,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9125DCC1C7A593D0058E1D7 /* LaunchScreen.storyboard in Resources */,
-				B9125DC91C7A593D0058E1D7 /* Assets.xcassets in Resources */,
-				B9125DC71C7A593D0058E1D7 /* Main.storyboard in Resources */,
+				B9125E011C7A5D360058E1D7 /* Main.storyboard in Resources */,
+				B9125E171C7A61B50058E1D7 /* Assets.xcassets in Resources */,
+				B9125E001C7A5D360058E1D7 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,9 +372,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9125DC41C7A593D0058E1D7 /* SecondViewController.swift in Sources */,
-				B9125DC01C7A593D0058E1D7 /* AppDelegate.swift in Sources */,
-				B9125DC21C7A593D0058E1D7 /* FirstViewController.swift in Sources */,
+				B9125DFE1C7A5D360058E1D7 /* AppDelegate.swift in Sources */,
+				B9125E0E1C7A5F010058E1D7 /* ProductsCollectionViewController.swift in Sources */,
+				B9125E0A1C7A5E5A0058E1D7 /* BaseTableViewController.swift in Sources */,
+				B9125E111C7A5F4E0058E1D7 /* FavoritesTableViewController.swift in Sources */,
+				B9125E051C7A5D730058E1D7 /* BaseViewController.swift in Sources */,
+				B9125E0C1C7A5E660058E1D7 /* BaseCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,20 +413,21 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B9125DC51C7A593D0058E1D7 /* Main.storyboard */ = {
+		B9125DF61C7A5D360058E1D7 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				B9125DC61C7A593D0058E1D7 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		B9125DCA1C7A593D0058E1D7 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B9125DCB1C7A593D0058E1D7 /* Base */,
+				B9125DF71C7A5D360058E1D7 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		B9125DF81C7A5D360058E1D7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B9125DF91C7A5D360058E1D7 /* Base */,
+			);
+			name = Main.storyboard;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -403,7 +520,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = SouqTask/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/SouqTask/Application/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mamouneyya.SouqTask;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -414,7 +531,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = SouqTask/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/SouqTask/Application/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mamouneyya.SouqTask;
 				PRODUCT_NAME = "$(TARGET_NAME)";
