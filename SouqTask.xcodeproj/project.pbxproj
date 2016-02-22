@@ -18,6 +18,7 @@
 		B9125E0E1C7A5F010058E1D7 /* ProductsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9125E0D1C7A5F010058E1D7 /* ProductsCollectionViewController.swift */; };
 		B9125E111C7A5F4E0058E1D7 /* FavoritesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9125E101C7A5F4E0058E1D7 /* FavoritesCollectionViewController.swift */; };
 		B9125E171C7A61B50058E1D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9125E161C7A61B50058E1D7 /* Assets.xcassets */; };
+		B9125E211C7BD0D80058E1D7 /* LoginTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9125E201C7BD0D80058E1D7 /* LoginTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		B9125E0D1C7A5F010058E1D7 /* ProductsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductsCollectionViewController.swift; path = Products/ProductsCollectionViewController.swift; sourceTree = "<group>"; };
 		B9125E101C7A5F4E0058E1D7 /* FavoritesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritesCollectionViewController.swift; path = Favorites/FavoritesCollectionViewController.swift; sourceTree = "<group>"; };
 		B9125E161C7A61B50058E1D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B9125E201C7BD0D80058E1D7 /* LoginTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				B9125E061C7A5D790058E1D7 /* Bases */,
+				B9125E1D1C7BB9E90058E1D7 /* Login */,
 				B9125E0F1C7A5F070058E1D7 /* Products */,
 				B9125E121C7A5F520058E1D7 /* Favorites */,
 			);
@@ -239,6 +242,14 @@
 				B9125DF61C7A5D360058E1D7 /* LaunchScreen.storyboard */,
 			);
 			name = Other;
+			sourceTree = "<group>";
+		};
+		B9125E1D1C7BB9E90058E1D7 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B9125E201C7BD0D80058E1D7 /* LoginTableViewController.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,6 +383,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9125E211C7BD0D80058E1D7 /* LoginTableViewController.swift in Sources */,
 				B9125DFE1C7A5D360058E1D7 /* AppDelegate.swift in Sources */,
 				B9125E0E1C7A5F010058E1D7 /* ProductsCollectionViewController.swift in Sources */,
 				B9125E0A1C7A5E5A0058E1D7 /* BaseTableViewController.swift in Sources */,
