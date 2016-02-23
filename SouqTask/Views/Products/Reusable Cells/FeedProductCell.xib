@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="SNw-pe-99y" customClass="ProductCollectionViewCell" customModule="SouqTask" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZsY-8U-iKH">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kGt-L4-gg1">
+                        <rect key="frame" x="0.0" y="159.5" width="200" height="40.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cxt-ko-aVy">
+                                <rect key="frame" x="8" y="10" width="184" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.75" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cxt-ko-aVy" firstAttribute="top" secondItem="kGt-L4-gg1" secondAttribute="top" constant="10" id="2fJ-Tb-eOL"/>
+                            <constraint firstAttribute="trailing" secondItem="cxt-ko-aVy" secondAttribute="trailing" constant="8" id="IqK-rX-ezI"/>
+                            <constraint firstAttribute="bottom" secondItem="cxt-ko-aVy" secondAttribute="bottom" constant="10" id="h5w-bI-8ht"/>
+                            <constraint firstItem="cxt-ko-aVy" firstAttribute="leading" secondItem="kGt-L4-gg1" secondAttribute="leading" constant="8" id="pGf-Cl-qk0"/>
+                        </constraints>
+                    </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fdA-eO-GUl">
+                        <rect key="frame" x="8" y="8" width="46" height="30"/>
+                        <state key="normal" title="Button"/>
+                        <connections>
+                            <action selector="favoriteButtonTapped:" destination="SNw-pe-99y" eventType="touchUpInside" id="Kbe-ub-aE6"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstItem="ZsY-8U-iKH" firstAttribute="leading" secondItem="SNw-pe-99y" secondAttribute="leading" id="1Ru-jQ-yUN"/>
+                <constraint firstAttribute="trailing" secondItem="ZsY-8U-iKH" secondAttribute="trailing" id="3iB-pS-hih"/>
+                <constraint firstItem="fdA-eO-GUl" firstAttribute="top" secondItem="SNw-pe-99y" secondAttribute="top" constant="8" id="9tA-H8-fAH"/>
+                <constraint firstItem="fdA-eO-GUl" firstAttribute="leading" secondItem="SNw-pe-99y" secondAttribute="leading" constant="8" id="Fz7-hj-Me4"/>
+                <constraint firstItem="kGt-L4-gg1" firstAttribute="leading" secondItem="SNw-pe-99y" secondAttribute="leading" id="LeD-kU-mta"/>
+                <constraint firstAttribute="trailing" secondItem="kGt-L4-gg1" secondAttribute="trailing" id="cA0-x6-a8M"/>
+                <constraint firstItem="ZsY-8U-iKH" firstAttribute="top" secondItem="SNw-pe-99y" secondAttribute="top" id="cQM-qZ-huD"/>
+                <constraint firstAttribute="bottom" secondItem="ZsY-8U-iKH" secondAttribute="bottom" id="pb9-XJ-vtW"/>
+                <constraint firstAttribute="bottom" secondItem="kGt-L4-gg1" secondAttribute="bottom" id="wfD-3n-Yvg"/>
+            </constraints>
+            <size key="customSize" width="211" height="200"/>
+            <connections>
+                <outlet property="favoriteButton" destination="fdA-eO-GUl" id="7WI-y3-YBX"/>
+                <outlet property="productTitle" destination="cxt-ko-aVy" id="rTZ-St-0aE"/>
+            </connections>
+            <point key="canvasLocation" x="252" y="276"/>
+        </collectionViewCell>
+    </objects>
+</document>
