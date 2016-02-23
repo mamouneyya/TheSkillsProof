@@ -24,6 +24,7 @@
 		B9125E311C7BDB1E0058E1D7 /* FeedProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9125E301C7BDB1E0058E1D7 /* FeedProductCell.xib */; };
 		B9125E331C7BDB380058E1D7 /* FavoritedProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9125E321C7BDB380058E1D7 /* FavoritedProductCell.xib */; };
 		B9125E351C7BDE310058E1D7 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9125E341C7BDE310058E1D7 /* ProductCollectionViewCell.swift */; };
+		B9125E371C7D1F6F0058E1D7 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9125E361C7D1F6F0058E1D7 /* Product.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		B9125E301C7BDB1E0058E1D7 /* FeedProductCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedProductCell.xib; sourceTree = "<group>"; };
 		B9125E321C7BDB380058E1D7 /* FavoritedProductCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoritedProductCell.xib; sourceTree = "<group>"; };
 		B9125E341C7BDE310058E1D7 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
+		B9125E361C7D1F6F0058E1D7 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Product.swift; path = Products/Product.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +199,7 @@
 		B9125DF41C7A5D360058E1D7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B9125E361C7D1F6F0058E1D7 /* Product.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -495,6 +498,7 @@
 				B9125E0A1C7A5E5A0058E1D7 /* BaseTableViewController.swift in Sources */,
 				B9125E111C7A5F4E0058E1D7 /* FavoritesCollectionViewController.swift in Sources */,
 				B9125E051C7A5D730058E1D7 /* BaseViewController.swift in Sources */,
+				B9125E371C7D1F6F0058E1D7 /* Product.swift in Sources */,
 				B9125E351C7BDE310058E1D7 /* ProductCollectionViewCell.swift in Sources */,
 				B9125E0C1C7A5E660058E1D7 /* BaseCollectionViewController.swift in Sources */,
 			);
