@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum ProductCellConfigurationsSet {
+    case All
+    case Favorited
+}
+
 class ProductCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Outlets
