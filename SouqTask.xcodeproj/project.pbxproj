@@ -25,6 +25,11 @@
 		B9125E331C7BDB380058E1D7 /* FavoritedProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9125E321C7BDB380058E1D7 /* FavoritedProductCell.xib */; };
 		B9125E351C7BDE310058E1D7 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9125E341C7BDE310058E1D7 /* ProductCollectionViewCell.swift */; };
 		B9125E371C7D1F6F0058E1D7 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9125E361C7D1F6F0058E1D7 /* Product.swift */; };
+		B9125E3B1C7D24C50058E1D7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9125E3A1C7D24C50058E1D7 /* Constants.swift */; };
+		B9D618361C81086D00EE7E6E /* Networker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D618351C81086D00EE7E6E /* Networker.swift */; };
+		B9D618391C81191E00EE7E6E /* StartupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D618381C81191E00EE7E6E /* StartupViewController.swift */; };
+		B9D6183B1C81E3C100EE7E6E /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D6183A1C81E3C100EE7E6E /* Authenticator.swift */; };
+		B9D6183D1C81EBEF00EE7E6E /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D6183C1C81EBEF00EE7E6E /* Assets.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +76,11 @@
 		B9125E321C7BDB380058E1D7 /* FavoritedProductCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoritedProductCell.xib; sourceTree = "<group>"; };
 		B9125E341C7BDE310058E1D7 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		B9125E361C7D1F6F0058E1D7 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Product.swift; path = Products/Product.swift; sourceTree = "<group>"; };
+		B9125E3A1C7D24C50058E1D7 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B9D618351C81086D00EE7E6E /* Networker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networker.swift; sourceTree = "<group>"; };
+		B9D618381C81191E00EE7E6E /* StartupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartupViewController.swift; sourceTree = "<group>"; };
+		B9D6183A1C81E3C100EE7E6E /* Authenticator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
+		B9D6183C1C81EBEF00EE7E6E /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				B9125E061C7A5D790058E1D7 /* Bases */,
+				B9D618371C81191E00EE7E6E /* Startup */,
 				B9125E1D1C7BB9E90058E1D7 /* Login */,
 				B9125E0F1C7A5F070058E1D7 /* Products */,
 				B9125E121C7A5F520058E1D7 /* Favorites */,
@@ -192,6 +203,10 @@
 		B9125DF31C7A5D360058E1D7 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				B9125E3A1C7D24C50058E1D7 /* Constants.swift */,
+				B9D618351C81086D00EE7E6E /* Networker.swift */,
+				B9D6183A1C81E3C100EE7E6E /* Authenticator.swift */,
+				B9D6183C1C81EBEF00EE7E6E /* Assets.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -305,6 +320,14 @@
 				B9125E321C7BDB380058E1D7 /* FavoritedProductCell.xib */,
 			);
 			path = "Reusable Cells";
+			sourceTree = "<group>";
+		};
+		B9D618371C81191E00EE7E6E /* Startup */ = {
+			isa = PBXGroup;
+			children = (
+				B9D618381C81191E00EE7E6E /* StartupViewController.swift */,
+			);
+			path = Startup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -492,15 +515,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9125E211C7BD0D80058E1D7 /* LoginTableViewController.swift in Sources */,
+				B9D6183B1C81E3C100EE7E6E /* Authenticator.swift in Sources */,
+				B9125E3B1C7D24C50058E1D7 /* Constants.swift in Sources */,
+				B9D618391C81191E00EE7E6E /* StartupViewController.swift in Sources */,
 				B9125DFE1C7A5D360058E1D7 /* AppDelegate.swift in Sources */,
 				B9125E2D1C7BDA850058E1D7 /* ProductsCollectionView.swift in Sources */,
 				B9125E0E1C7A5F010058E1D7 /* ProductsCollectionViewController.swift in Sources */,
 				B9125E0A1C7A5E5A0058E1D7 /* BaseTableViewController.swift in Sources */,
+				B9D6183D1C81EBEF00EE7E6E /* Assets.swift in Sources */,
 				B9125E111C7A5F4E0058E1D7 /* FavoritesCollectionViewController.swift in Sources */,
 				B9125E051C7A5D730058E1D7 /* BaseViewController.swift in Sources */,
 				B9125E371C7D1F6F0058E1D7 /* Product.swift in Sources */,
 				B9125E351C7BDE310058E1D7 /* ProductCollectionViewCell.swift in Sources */,
 				B9125E0C1C7A5E660058E1D7 /* BaseCollectionViewController.swift in Sources */,
+				B9D618361C81086D00EE7E6E /* Networker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -592,7 +620,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -631,7 +659,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -645,6 +673,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "$(SRCROOT)/SouqTask/Application/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mamouneyya.SouqTask;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -657,6 +686,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "$(SRCROOT)/SouqTask/Application/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mamouneyya.SouqTask;
 				PRODUCT_NAME = "$(TARGET_NAME)";

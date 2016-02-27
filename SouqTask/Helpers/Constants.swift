@@ -7,40 +7,28 @@
 //
 
 import UIKit
+import p2_OAuth2
+import OAuthSwift
 
-// MARK: - URLs
+// MARK: - Networking
 
 struct API {
-    static let Base = "https://itunes.apple.com/sa/rss"
+    static let Base = "https://api.souq.com/v1"
 }
 
-// MARK: - Colors
+struct OAuthSettings {
+    static let ClientId       = "20455500"
+    static let ClientSecret   = "a3rIAIObv3PSIIKncpEj"
+    static let AuthorizeUri   = "https://api.souq.com/oauth/authorize"
+    static let AccessTokenUri = "https://api.souq.com/oauth/access_token"
+    static let RedirectUri    = "souq-skills-test://oauth-callback"
+    static let scope          = "OAuth2.0,discovery,customer_profile"
+}
+
+// MARK: - Appearance Assets
 
 struct AppColor {
-    static let mainTint = UIColor(red: 45/255, green: 95/255, blue: 145/255, alpha: 1)
-}
-
-// MARK: - Fonts
-
-private let familyName = "SFUIText"
-
-enum AppFont: String {
-    case Light    = "Light"
-    case Regular  = "Regular"
-    case SemiBold = "Semibold"
-    case Bold     = "Bold"
-    
-    func Size(size: CGFloat) -> UIFont {
-        if let font = UIFont(name: fullFontName, size: size) {
-            return font
-        }
-        
-        fatalError("Font '\(fullFontName)' does not exist.")
-    }
-    
-    private var fullFontName: String {
-        return rawValue.isEmpty ? familyName : familyName + "-" + rawValue
-    }
+    static let mainTint = UIColor(red:0.0/255.0, green:138.0/255.0, blue:255.0/255.0, alpha:1.0)
 }
 
 // MARK: - Performance Logging Helpers

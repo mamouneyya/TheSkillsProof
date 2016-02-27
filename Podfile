@@ -7,6 +7,8 @@ pod 'Alamofire', '~> 3.2'
 pod 'AlamofireImage', '~> 2.3'
 pod 'AlamofireNetworkActivityIndicator', '~> 1.0'
 pod 'ObjectMapper', '~> 1.1'
+pod 'p2.OAuth2', '~> 2.2'
+pod 'OAuthSwift', '~> 0.5.0'
 pod 'AASquaresLoading', '~> 0.3'
 
 end

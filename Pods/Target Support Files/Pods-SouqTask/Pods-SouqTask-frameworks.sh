@@ -88,12 +88,18 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-SouqTask/Alamofire.framework"
   install_framework "Pods-SouqTask/AlamofireImage.framework"
   install_framework "Pods-SouqTask/AlamofireNetworkActivityIndicator.framework"
+  install_framework "Pods-SouqTask/OAuthSwift.framework"
   install_framework "Pods-SouqTask/ObjectMapper.framework"
+  install_framework "Pods-SouqTask/SwiftKeychain.framework"
+  install_framework "Pods-SouqTask/p2_OAuth2.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-SouqTask/AASquaresLoading.framework"
   install_framework "Pods-SouqTask/Alamofire.framework"
   install_framework "Pods-SouqTask/AlamofireImage.framework"
   install_framework "Pods-SouqTask/AlamofireNetworkActivityIndicator.framework"
+  install_framework "Pods-SouqTask/OAuthSwift.framework"
   install_framework "Pods-SouqTask/ObjectMapper.framework"
+  install_framework "Pods-SouqTask/SwiftKeychain.framework"
+  install_framework "Pods-SouqTask/p2_OAuth2.framework"
 fi

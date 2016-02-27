@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import p2_OAuth2
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -41,6 +42,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    // MARK: - Helpers
+    
+    class func sharedAppDelegate() -> AppDelegate? {
+        return UIApplication.sharedApplication().delegate as? AppDelegate
+    }
+    
+    // MARK: - Deep Linking
+    
+    func applicationHandleOpenURL(url: NSURL) {
+        if (url.host == "oauth-callback") {
+            Authenticator.handleRedirectURL(url)
+        }
+    }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        applicationHandleOpenURL(url)
+        return true
+    }
+
+    @available(iOS 9.0, *)
+    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+        applicationHandleOpenURL(url)
+        return true
+    }
+    
+    // MARK: - Navigation
+
+    func changeRootViewController(destinationViewController: UIViewController, fancyAnimation: Bool = false) {
+        let snapshot:UIView = (self.window?.snapshotViewAfterScreenUpdates(true))!
+        destinationViewController.view.addSubview(snapshot)
+        
+        self.window?.rootViewController = destinationViewController
+        
+        UIView.animateWithDuration(0.3, animations: {() in
+            snapshot.layer.opacity = 0;
+            
+            if fancyAnimation {
+                snapshot.layer.transform = CATransform3DMakeScale(1.5, 1.5, 1.5)
+            }
+            
+            }, completion: {
+                (value: Bool) in
+                snapshot.removeFromSuperview()
+        })
+    }
 
 }
 
