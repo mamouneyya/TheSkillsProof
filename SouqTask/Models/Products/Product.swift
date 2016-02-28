@@ -9,27 +9,9 @@
 import UIKit
 import ObjectMapper
 
-class Price {
-    
-    // MARK: Vars
-    
-    var value = 0
-    var currency = "$"
-    
-    // MARK: Lifecycle
-    
-    init() {
-        
-    }
-    
-    init(_ value: Int) {
-        self.value = value
-    }
-}
+class Product: Root {
 
-class Product: Mappable {
-
-    // MARK: Vars
+    // MARK: - Vars
     
     var id = ""
     var categoryId = ""
@@ -42,19 +24,19 @@ class Product: Mappable {
     
     var favorited = false
 
-    // MARK: Lifecycle
+    // MARK: - Lifecycle
     
-    init() {
-
+    override init() {
+        super.init()
     }
     
     required init?(_ map: Map) {
-        
+        super.init(map)
     }
     
-    // MARK: Mappable
+    // MARK: - Mappable
     
-    func mapping(map: Map) {
+    override func mapping(map: Map) {
         id          <- map["id"]
         categoryId  <- map["product_type_id"]
         title       <- map["label"]
