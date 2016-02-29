@@ -10,69 +10,69 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
-//enum Router: URLRequestConvertible {
-    
-    //static let baseURLString = API.Base
-    //static let resultsPerPage = 50
-    
-    //// Apps
-    
-    //case getApplications
-    
-    //// MARK: URLRequestConvertible
-    
-    //var URLRequest: NSMutableURLRequest {
-        //let result: (path: String, parameters: [String: AnyObject]?) = {
-            //return ("topfreeapplications/limit=\(Router.resultsPerPage)/json", nil)
-        //}()
+class Networker {
 
-        //let URL = NSURL(string: Router.baseURLString)!
-        //// cache data using NSURLCache
-        //// TODO this can be implemented in a better way (e.g. using CoreData)
-        //let cachePolicy: NSURLRequestCachePolicy = Networker.isReachabile() ? .ReloadIgnoringLocalCacheData : .ReturnCacheDataElseLoad
-        //let URLRequest = NSMutableURLRequest(URL: URL.URLByAppendingPathComponent(result.path), cachePolicy: cachePolicy, timeoutInterval: 30)
-        //// override the cache policy in the server's response header
-        //// @ref http://stackoverflow.com/questions/27785693/alamofire-nsurlcache-is-not-working
-        //URLRequest.addValue("private", forHTTPHeaderField: "Cache-Control")
-        
-        //let encoding = Alamofire.ParameterEncoding.URL
-
-        //return encoding.encode(URLRequest, parameters: result.parameters).0
-    //}
+    // MARK: - Public Vars
     
-//}
+    /// Singleton's class shared instance
+    static let sharedInstance = Networker()
 
-class Networker: Alamofire.Manager {
+    /// Internet connection reachability
+    static var isReachable: Bool {
+        if let reachability = Networker.sharedInstance.reachability {
+            return reachability.isReachable
+        } else {
+            print("Unable to create Reachability")
+            return false
+        }
+    }
 
-    static let sharedManager = Networker()
-    static let sharedImageDownloader = ImageDownloader(
+    // MARK: - Private Vars
+    
+    /// Internal Alamofire's reachability manager
+    private let reachability = NetworkReachabilityManager()
+    /// Internal Alamofire's request manager
+    private let manager = Alamofire.Manager()
+    /// Internal Alamofire's image downloader
+    private let imageDownloader = ImageDownloader(
         configuration: ImageDownloader.defaultURLSessionConfiguration(),
         downloadPrioritization: .LIFO,
         maximumActiveDownloads: 4,
         imageCache: AutoPurgingImageCache()
     )
 
-    // MARK: - Helpers
+    // MARK: - Lifecycle
     
-    //class func isReachabile() -> Bool {
-        //let reachability: Reachability
+    private init() {
         
-        //do {
-            //reachability = try Reachability.reachabilityForInternetConnection()
-        //} catch {
-            //print("Unable to create Reachability")
-            //return false
-        //}
-        
-        //return reachability.isReachable()
-    //}
+    }
     
     // MARK: - Request Methods
 
+    /**
+        Creates a request for the specified URL request.
+        
+        If `startRequestsImmediately` is `true`, the request will have `resume()` called before being returned.
+        
+        - parameter URLRequest: The URL request
+        
+        - returns: The created request.
+    */
     class func request(URLRequest: URLRequestConvertible) -> Request {
-        return Networker.sharedManager.request(URLRequest)
+        return Networker.sharedInstance.manager.request(URLRequest)
     }
     
+    /**
+         Creates a request for the specified method, URL string, parameters, parameter encoding and headers.
+         
+         - parameter method:     The HTTP method.
+         - parameter URLString:  The URL string.
+         - parameter parameters: The parameters. `nil` by default.
+         - parameter encoding:   The parameter encoding. `.URL` by default.
+         - parameter headers:    The HTTP headers. `nil` by default.
+         
+         - returns: The created request.
+     */
     class func request(
         method: Alamofire.Method,
         _ URLString: URLStringConvertible,
@@ -81,7 +81,7 @@ class Networker: Alamofire.Manager {
         headers: [String: String]? = nil)
         -> Request
     {
-        return Networker.sharedManager.request(
+        return Networker.sharedInstance.manager.request(
             method,
             URLString,
             parameters: parameters,
@@ -90,13 +90,34 @@ class Networker: Alamofire.Manager {
             )
     }
     
+    /**
+         Creates a download request using the internal `Manager` instance for the specified URL request.
+         
+         If the same download request is already in the queue or currently being downloaded, the filter and completion
+         handler are appended to the already existing request. Once the request completes, all filters and completion
+         handlers attached to the request are executed in the order they were added. Additionally, any filters attached
+         to the request with the same identifiers are only executed once. The resulting image is then passed into each
+         completion handler paired with the filter.
+         
+         You should not attempt to directly cancel the `request` inside the request receipt since other callers may be
+         relying on the completion of that request. Instead, you should call `cancelRequestForRequestReceipt` with the
+         returned request receipt to allow the `ImageDownloader` to optimize the cancellation on behalf of all active
+         callers.
+         
+         - parameter URLRequest: The URL request.
+         - parameter filter      The image filter to apply to the image after the download is complete. Defaults to `nil`.
+         - parameter completion: The closure called when the download request is complete.
+         
+         - returns: The request receipt for the download request if available. `nil` if the image is stored in the image
+         cache and the URL request cache policy allows the cache to be used.
+     */
     class func downloadImage(
         URLRequest URLRequest: URLRequestConvertible,
         filter: ImageFilter? = nil,
         completion: ImageDownloader.CompletionHandler?)
         -> RequestReceipt?
     {
-        return Networker.sharedImageDownloader.downloadImage(
+        return Networker.sharedInstance.imageDownloader.downloadImage(
             URLRequest: URLRequest,
             filter: filter,
             completion: completion)
