@@ -18,7 +18,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZC8-oa-Bry">
                         <rect key="frame" x="130" y="99.5" width="262" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fI6-3b-df7">
@@ -50,7 +50,8 @@
             <size key="customSize" width="400" height="128"/>
             <connections>
                 <outlet property="deleteFavoriteButton" destination="Cju-RD-CFo" id="st2-k3-pTC"/>
-                <outlet property="productTitle" destination="ZC8-oa-Bry" id="0Ge-J9-r0N"/>
+                <outlet property="productImageView" destination="fI6-3b-df7" id="CUP-y7-65j"/>
+                <outlet property="productTitleLabel" destination="ZC8-oa-Bry" id="JfX-Ny-yKG"/>
             </connections>
             <point key="canvasLocation" x="273" y="294"/>
         </collectionViewCell>

@@ -25,6 +25,13 @@ struct OAuthSettings {
     static let scope          = "OAuth2.0,discovery,customer_profile"
 }
 
+// MARK: - Reusable Views
+
+struct Identifiers {
+    static let productCell    = "ListProduct"
+    static let favoritedCell  = "FavoritedProduct"
+}
+
 // MARK: - Appearance Assets
 
 struct AppColor {

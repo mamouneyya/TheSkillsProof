@@ -38,7 +38,7 @@ class ProductsCollectionView: UICollectionView {
 
     // MARK: - Public Vars
     
-    //var products = [Product]()
+    var products = [Product]()
     
     // MARK: - Private Vars
     
@@ -46,6 +46,10 @@ class ProductsCollectionView: UICollectionView {
         didSet {
             updateConfigurationsSet(configurationsSet)
         }
+    }
+    
+    private var productCellIdentifier: String {
+        return configurationsSet == .All ? Identifiers.productCell : Identifiers.favoritedCell
     }
     
     // MARK: - Public Methods
@@ -86,7 +90,10 @@ extension ProductsCollectionView: UICollectionViewDataSource {
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("", forIndexPath: indexPath)
+        
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(productCellIdentifier, forIndexPath: indexPath) as! ProductCollectionViewCell
+        
+        cell.product = self.products[indexPath.row]
         
         return cell
     }

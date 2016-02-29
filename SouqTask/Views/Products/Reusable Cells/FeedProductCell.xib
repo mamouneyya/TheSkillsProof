@@ -59,7 +59,8 @@
             <size key="customSize" width="211" height="200"/>
             <connections>
                 <outlet property="favoriteButton" destination="fdA-eO-GUl" id="7WI-y3-YBX"/>
-                <outlet property="productTitle" destination="cxt-ko-aVy" id="rTZ-St-0aE"/>
+                <outlet property="productImageView" destination="ZsY-8U-iKH" id="bha-k3-euc"/>
+                <outlet property="productTitleLabel" destination="cxt-ko-aVy" id="8Hr-f1-M9W"/>
             </connections>
             <point key="canvasLocation" x="252" y="276"/>
         </collectionViewCell>
