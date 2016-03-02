@@ -59,7 +59,12 @@ struct Router: URLRequestConvertible {
             //URLRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         //}
         
-        return requestConfigurations.encoding.encode(URLRequest, parameters: requestConfigurations.result.parameters).0
+        // add app_id and app_secret to the parameters
+        var requestParameters = requestConfigurations.result.parameters ?? [String: AnyObject]()
+            requestParameters["app_id"]     = OAuthSettings.ClientId
+            requestParameters["app_secret"] = OAuthSettings.ClientSecret
+        
+        return requestConfigurations.encoding.encode(URLRequest, parameters: requestParameters).0
     }
 
 }

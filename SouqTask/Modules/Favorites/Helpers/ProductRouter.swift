@@ -43,9 +43,7 @@ extension Product {
                     "show_variations" : false,
                     "country"         : RouterConfigurations.country,
                     "language"        : RouterConfigurations.language,
-                    "format"          : RouterConfigurations.format,
-                    "app_id"          : "20455500",
-                    "app_secret"      : "a3rIAIObv3PSIIKncpEj"
+                    "format"          : RouterConfigurations.format
                 ]
             }
             
