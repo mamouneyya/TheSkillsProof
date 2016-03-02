@@ -36,6 +36,7 @@
 		B96B31871C8718A6003CEAD3 /* FavoritedProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B96B316E1C8718A6003CEAD3 /* FavoritedProductCell.xib */; };
 		B96B31881C8718A6003CEAD3 /* FeedProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B96B316F1C8718A6003CEAD3 /* FeedProductCell.xib */; };
 		B96B31891C8718A6003CEAD3 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96B31701C8718A6003CEAD3 /* ProductCollectionViewCell.swift */; };
+		B96B31971C8730C4003CEAD3 /* ProductRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96B31961C8730C4003CEAD3 /* ProductRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,7 @@
 		B96B316E1C8718A6003CEAD3 /* FavoritedProductCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoritedProductCell.xib; sourceTree = "<group>"; };
 		B96B316F1C8718A6003CEAD3 /* FeedProductCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedProductCell.xib; sourceTree = "<group>"; };
 		B96B31701C8718A6003CEAD3 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
+		B96B31961C8730C4003CEAD3 /* ProductRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -470,6 +472,7 @@
 		B96B318D1C87199B003CEAD3 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				B96B31961C8730C4003CEAD3 /* ProductRouter.swift */,
 			);
 			name = Helpers;
 			path = SouqTask/Modules/Favorites/Helpers;
@@ -746,6 +749,7 @@
 				B96B317B1C8718A6003CEAD3 /* Utility.swift in Sources */,
 				B96B31891C8718A6003CEAD3 /* ProductCollectionViewCell.swift in Sources */,
 				B96B31731C8718A6003CEAD3 /* BaseCollectionViewController.swift in Sources */,
+				B96B31971C8730C4003CEAD3 /* ProductRouter.swift in Sources */,
 				B96B31751C8718A6003CEAD3 /* BaseViewController.swift in Sources */,
 				B96B31771C8718A6003CEAD3 /* Constants.swift in Sources */,
 				B96B31831C8718A6003CEAD3 /* ProductsCollectionViewController.swift in Sources */,

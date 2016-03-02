@@ -12,8 +12,17 @@ import OAuthSwift
 
 // MARK: - Networking
 
-struct API {
+struct APIPaths {
     static let Base = "https://api.souq.com/v1"
+}
+
+struct RouterConfigurations {
+    static let baseURLString  = APIPaths.Base
+    static let resultsPerPage = 15
+
+    static let format   = "json" // "json", "xml"
+    static let language = "en"   // "en", "ar"
+    static let country  = "ea"   // "ea", "sa"
 }
 
 struct OAuthSettings {

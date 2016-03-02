@@ -63,6 +63,19 @@ class Networker {
     }
     
     /**
+         Creates a request for the specified request configurations.
+         
+         If `startRequestsImmediately` is `true`, the request will have `resume()` called before being returned.
+         
+         - parameter requestConfigurations: The request configurations
+         
+         - returns: The created request.
+     */
+    class func request(requestConfigurations: RequestConfigurations) -> Request {
+        return Networker.sharedInstance.manager.request(Router(requestConfigurations))
+    }
+    
+    /**
          Creates a request for the specified method, URL string, parameters, parameter encoding and headers.
          
          - parameter method:     The HTTP method.
