@@ -11,7 +11,6 @@
 		B9125DD71C7A593D0058E1D7 /* SouqTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9125DD61C7A593D0058E1D7 /* SouqTaskTests.swift */; };
 		B9125DE21C7A593D0058E1D7 /* SouqTaskUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9125DE11C7A593D0058E1D7 /* SouqTaskUITests.swift */; };
 		B9125DFE1C7A5D360058E1D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9125DF01C7A5D360058E1D7 /* AppDelegate.swift */; };
-		B9125E011C7A5D360058E1D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9125DF81C7A5D360058E1D7 /* Main.storyboard */; };
 		B96B31711C8718A6003CEAD3 /* LoginTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96B313E1C8718A6003CEAD3 /* LoginTableViewController.swift */; };
 		B96B31721C8718A6003CEAD3 /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96B31401C8718A6003CEAD3 /* Authenticator.swift */; };
 		B96B31731C8718A6003CEAD3 /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96B31451C8718A6003CEAD3 /* BaseCollectionViewController.swift */; };
@@ -69,7 +68,6 @@
 		B9125DE31C7A593D0058E1D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9125DF01C7A5D360058E1D7 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9125DF11C7A5D360058E1D7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B9125DF91C7A5D360058E1D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B96B313E1C8718A6003CEAD3 /* LoginTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTableViewController.swift; sourceTree = "<group>"; };
 		B96B31401C8718A6003CEAD3 /* Authenticator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
 		B96B31451C8718A6003CEAD3 /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
@@ -165,7 +163,6 @@
 		B9125DBE1C7A593D0058E1D7 /* SouqTask */ = {
 			isa = PBXGroup;
 			children = (
-				B9125DF81C7A5D360058E1D7 /* Main.storyboard */,
 				B9125DEF1C7A5D360058E1D7 /* Application */,
 				B96B313B1C8718A6003CEAD3 /* Modules */,
 				B9125DFC1C7A5D360058E1D7 /* Vendors */,
@@ -656,7 +653,6 @@
 			files = (
 				B96B31871C8718A6003CEAD3 /* FavoritedProductCell.xib in Resources */,
 				B96B317F1C8718A6003CEAD3 /* Main.storyboard in Resources */,
-				B9125E011C7A5D360058E1D7 /* Main.storyboard in Resources */,
 				B96B31801C8718A6003CEAD3 /* Assets.xcassets in Resources */,
 				B96B317E1C8718A6003CEAD3 /* LaunchScreen.storyboard in Resources */,
 				B96B31881C8718A6003CEAD3 /* FeedProductCell.xib in Resources */,
@@ -788,15 +784,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B9125DF81C7A5D360058E1D7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B9125DF91C7A5D360058E1D7 /* Base */,
-			);
-			name = Main.storyboard;
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		B96B31541C8718A6003CEAD3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
