@@ -38,24 +38,32 @@ class ProductsCollectionView: UICollectionView {
 
     // MARK: - Public Vars
     
-    var products = [Product]()
-    
     // MARK: - Private Vars
     
+    /// Configurations set of the data / appearance
     private var configurationsSet = ProductsListConfigurationsSet.All {
         didSet {
             updateConfigurationsSet(configurationsSet)
         }
     }
     
-    private var productCellIdentifier: String {
-        return configurationsSet == .All ? Identifiers.productCell : Identifiers.favoritedCell
-    }
+    /// Data models for the table view data source to use
+    private var products = [Product]()
+    
+    /// Table's cells identifier for the table view data source to use
+    private var productCellIdentifier = ""
+    
+    /// Main view controller, to use in case of navigation action
+    private var mainController: UIViewController?
+    
+    /// Router to use for API calls
+    //private var APIRouter: Router!
     
     // MARK: - Public Methods
     
-    func configureWithConfigurations(configurations: ProductsListConfigurationsSet) {
-        self.configurationsSet = configurations
+    func getProducts(configurationsSet configurationsSet: ProductsListConfigurationsSet, target: AnyObject? = nil) {
+        self.configurationsSet = configurationsSet
+        self.mainController = target as? UIViewController
     }
     
     // MARK: - Private Methods
@@ -69,9 +77,9 @@ class ProductsCollectionView: UICollectionView {
     private func updateConfigurationsSet(configurations: ProductsListConfigurationsSet) {
         switch configurations {
         case .All:
-            ()
+            self.productCellIdentifier = Identifiers.productCell
         case .Favorited:
-            ()
+            self.productCellIdentifier = Identifiers.favoritedCell
         }
     }
     
