@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Alamofire
-import AlamofireImage
 
 class Networker {
 
@@ -47,7 +45,7 @@ class Networker {
         
     }
     
-    // MARK: - Request Methods
+    // MARK: - Requests
 
     /**
         Creates a request for the specified URL request.
@@ -59,7 +57,9 @@ class Networker {
         - returns: The created request.
     */
     class func request(URLRequest: URLRequestConvertible) -> Request {
-        return Networker.sharedInstance.manager.request(URLRequest)
+        return Networker.sharedInstance.manager
+            .request(URLRequest)
+            .validate()
     }
     
     /**
@@ -72,7 +72,9 @@ class Networker {
          - returns: The created request.
      */
     class func request(requestConfigurations: RequestConfigurations) -> Request {
-        return Networker.sharedInstance.manager.request(Router(requestConfigurations))
+        return Networker.sharedInstance.manager
+            .request(Router(requestConfigurations))
+            .validate()
     }
     
     /**
@@ -99,9 +101,12 @@ class Networker {
             URLString,
             parameters: parameters,
             encoding: encoding,
-            headers: headers
-            )
+            headers: headers)
+            .validate()
+        
     }
+    
+    // MARK: - Downloads
     
     /**
          Creates a download request using the internal `Manager` instance for the specified URL request.
