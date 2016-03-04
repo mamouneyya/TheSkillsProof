@@ -14,7 +14,6 @@ import UIKit
     - All: For all products list collection view.
     - Favorited: For favorited products collection view.
 */
-
 enum ProductsListConfigurationsSet {
     case All
     case Favorited
@@ -64,6 +63,18 @@ class ProductsCollectionView: UICollectionView {
     func getProducts(configurationsSet configurationsSet: ProductsListConfigurationsSet, target: AnyObject? = nil) {
         self.configurationsSet = configurationsSet
         self.mainController = target as? UIViewController
+        
+        Networker.request(Product.Request.getProductTypes(offset: 0)).responseJSON { (response) -> Void in
+            
+            switch response.result {
+            case .Success(let data):
+                print("Success")
+                print(data)
+            case .Failure(let error):
+                print("Failure")
+                print(error)
+            }
+        }
     }
     
     // MARK: - Private Methods
@@ -73,13 +84,12 @@ class ProductsCollectionView: UICollectionView {
         
         - Parameter configurations: Configurations set to use.
     */
-    
     private func updateConfigurationsSet(configurations: ProductsListConfigurationsSet) {
         switch configurations {
         case .All:
-            self.productCellIdentifier = Identifiers.productCell
+            self.productCellIdentifier = Identifiers.TableCells.Product
         case .Favorited:
-            self.productCellIdentifier = Identifiers.favoritedCell
+            self.productCellIdentifier = Identifiers.TableCells.Favorited
         }
     }
     

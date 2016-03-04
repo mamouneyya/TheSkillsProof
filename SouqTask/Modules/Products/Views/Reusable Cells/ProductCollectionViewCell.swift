@@ -13,7 +13,7 @@ enum ProductCellConfigurationsSet {
     case Favorited
 }
 
-class ProductCollectionViewCell: UICollectionViewCell {
+class ProductCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - Outlets
     

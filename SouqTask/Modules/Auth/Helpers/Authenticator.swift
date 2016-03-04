@@ -56,6 +56,7 @@ class Authenticator {
         oauth2 = OAuth2CodeGrant(settings: settings)
         oauth2.authConfig.authorizeEmbedded = true
         oauth2.authConfig.authorizeContext = UIApplication.sharedApplication().keyWindow?.rootViewController
+        oauth2.authConfig.secretInBody = true
         
         #if DEBUG
             oauth2.verbose = true

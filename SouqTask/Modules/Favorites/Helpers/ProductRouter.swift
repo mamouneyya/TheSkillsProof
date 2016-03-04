@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 
 extension Product {
 
@@ -28,10 +27,10 @@ extension Product {
             case .getProductTypes(let offset):
                 path = "products/types"
                 parameters = [
-                    "page"      : offset,
-                    "show"      : RouterConfigurations.resultsPerPage,
-                    "language"  : RouterConfigurations.language,
-                    "format"    : RouterConfigurations.format
+                    "page"     : offset,
+                    "show"     : RouterConfigurations.resultsPerPage,
+                    "language" : RouterConfigurations.language,
+                    "format"   : RouterConfigurations.format
                 ]
                 
             case .getProducts:

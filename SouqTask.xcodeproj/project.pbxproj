@@ -37,6 +37,13 @@
 		B96B31881C8718A6003CEAD3 /* FeedProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B96B316F1C8718A6003CEAD3 /* FeedProductCell.xib */; };
 		B96B31891C8718A6003CEAD3 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96B31701C8718A6003CEAD3 /* ProductCollectionViewCell.swift */; };
 		B96B31971C8730C4003CEAD3 /* ProductRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96B31961C8730C4003CEAD3 /* ProductRouter.swift */; };
+		B9DECC211C884701002C79EF /* Serializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DECC201C884701002C79EF /* Serializer.swift */; };
+		B9DECC231C88A111002C79EF /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DECC221C88A111002C79EF /* Error.swift */; };
+		B9DECC251C88FDE0002C79EF /* ProductTypesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DECC241C88FDE0002C79EF /* ProductTypesViewController.swift */; };
+		B9DECC271C88FE04002C79EF /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DECC261C88FE04002C79EF /* BaseTableViewCell.swift */; };
+		B9DECC291C88FE2A002C79EF /* ProductTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DECC281C88FE2A002C79EF /* ProductTypeTableViewCell.swift */; };
+		B9DECC2B1C88FE90002C79EF /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DECC2A1C88FE90002C79EF /* BaseCollectionViewCell.swift */; };
+		B9DECC2E1C89EEDC002C79EF /* Ext-DefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DECC2D1C89EEDC002C79EF /* Ext-DefaultsKeys.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +102,14 @@
 		B96B316F1C8718A6003CEAD3 /* FeedProductCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedProductCell.xib; sourceTree = "<group>"; };
 		B96B31701C8718A6003CEAD3 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		B96B31961C8730C4003CEAD3 /* ProductRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductRouter.swift; sourceTree = "<group>"; };
+		B9DECC201C884701002C79EF /* Serializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serializer.swift; sourceTree = "<group>"; };
+		B9DECC221C88A111002C79EF /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		B9DECC241C88FDE0002C79EF /* ProductTypesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTypesViewController.swift; sourceTree = "<group>"; };
+		B9DECC261C88FE04002C79EF /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		B9DECC281C88FE2A002C79EF /* ProductTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTypeTableViewCell.swift; sourceTree = "<group>"; };
+		B9DECC2A1C88FE90002C79EF /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		B9DECC2C1C89EC6A002C79EF /* SouqTask-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SouqTask-Bridging-Header.h"; sourceTree = "<group>"; };
+		B9DECC2D1C89EEDC002C79EF /* Ext-DefaultsKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ext-DefaultsKeys.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				B9125DF01C7A5D360058E1D7 /* AppDelegate.swift */,
+				B9DECC2C1C89EC6A002C79EF /* SouqTask-Bridging-Header.h */,
 				B9125DF11C7A5D360058E1D7 /* Info.plist */,
 			);
 			path = Application;
@@ -288,6 +304,8 @@
 				B96B31491C8718A6003CEAD3 /* Assets.swift */,
 				B96B314D1C8718A6003CEAD3 /* Networker.swift */,
 				B96B314E1C8718A6003CEAD3 /* Router.swift */,
+				B9DECC201C884701002C79EF /* Serializer.swift */,
+				B9DECC221C88A111002C79EF /* Error.swift */,
 				B96B314F1C8718A6003CEAD3 /* Utility.swift */,
 				B96B314C1C8718A6003CEAD3 /* Extensions.swift */,
 				B96B314B1C8718A6003CEAD3 /* Extensions */,
@@ -298,6 +316,7 @@
 		B96B314B1C8718A6003CEAD3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B9DECC2D1C89EEDC002C79EF /* Ext-DefaultsKeys.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -330,6 +349,8 @@
 		B96B315A1C8718A6003CEAD3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B9DECC261C88FE04002C79EF /* BaseTableViewCell.swift */,
+				B9DECC2A1C88FE90002C79EF /* BaseCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -415,6 +436,7 @@
 			isa = PBXGroup;
 			children = (
 				B96B31671C8718A6003CEAD3 /* ProductsCollectionViewController.swift */,
+				B9DECC241C88FDE0002C79EF /* ProductTypesViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -440,9 +462,10 @@
 		B96B316D1C8718A6003CEAD3 /* Reusable Cells */ = {
 			isa = PBXGroup;
 			children = (
+				B96B31701C8718A6003CEAD3 /* ProductCollectionViewCell.swift */,
 				B96B316E1C8718A6003CEAD3 /* FavoritedProductCell.xib */,
 				B96B316F1C8718A6003CEAD3 /* FeedProductCell.xib */,
-				B96B31701C8718A6003CEAD3 /* ProductCollectionViewCell.swift */,
+				B9DECC281C88FE2A002C79EF /* ProductTypeTableViewCell.swift */,
 			);
 			path = "Reusable Cells";
 			sourceTree = "<group>";
@@ -732,26 +755,33 @@
 			buildActionMask = 2147483647;
 			files = (
 				B96B317A1C8718A6003CEAD3 /* Router.swift in Sources */,
+				B9DECC2B1C88FE90002C79EF /* BaseCollectionViewCell.swift in Sources */,
+				B9DECC211C884701002C79EF /* Serializer.swift in Sources */,
 				B9125DFE1C7A5D360058E1D7 /* AppDelegate.swift in Sources */,
 				B96B31781C8718A6003CEAD3 /* Extensions.swift in Sources */,
+				B9DECC291C88FE2A002C79EF /* ProductTypeTableViewCell.swift in Sources */,
 				B96B31761C8718A6003CEAD3 /* Assets.swift in Sources */,
 				B96B31811C8718A6003CEAD3 /* FavoritesCollectionViewController.swift in Sources */,
 				B96B31711C8718A6003CEAD3 /* LoginTableViewController.swift in Sources */,
 				B96B31741C8718A6003CEAD3 /* BaseTableViewController.swift in Sources */,
 				B96B31791C8718A6003CEAD3 /* Networker.swift in Sources */,
+				B9DECC251C88FDE0002C79EF /* ProductTypesViewController.swift in Sources */,
 				B96B31851C8718A6003CEAD3 /* ProductType.swift in Sources */,
 				B96B31821C8718A6003CEAD3 /* StartupViewController.swift in Sources */,
 				B96B31721C8718A6003CEAD3 /* Authenticator.swift in Sources */,
 				B96B317C1C8718A6003CEAD3 /* Price.swift in Sources */,
+				B9DECC2E1C89EEDC002C79EF /* Ext-DefaultsKeys.swift in Sources */,
 				B96B31841C8718A6003CEAD3 /* Product.swift in Sources */,
 				B96B317D1C8718A6003CEAD3 /* Root.swift in Sources */,
 				B96B31861C8718A6003CEAD3 /* ProductsCollectionView.swift in Sources */,
+				B9DECC231C88A111002C79EF /* Error.swift in Sources */,
 				B96B317B1C8718A6003CEAD3 /* Utility.swift in Sources */,
 				B96B31891C8718A6003CEAD3 /* ProductCollectionViewCell.swift in Sources */,
 				B96B31731C8718A6003CEAD3 /* BaseCollectionViewController.swift in Sources */,
 				B96B31971C8730C4003CEAD3 /* ProductRouter.swift in Sources */,
 				B96B31751C8718A6003CEAD3 /* BaseViewController.swift in Sources */,
 				B96B31771C8718A6003CEAD3 /* Constants.swift in Sources */,
+				B9DECC271C88FE04002C79EF /* BaseTableViewCell.swift in Sources */,
 				B96B31831C8718A6003CEAD3 /* ProductsCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -900,8 +930,10 @@
 				INFOPLIST_FILE = "$(SRCROOT)/SouqTask/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				"OTHER_SWIFT_FLAGS[arch=*]" = "$(inherited) \"-D\" \"DEBUG\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mamouneyya.SouqTask;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SouqTask/Application/SouqTask-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -915,6 +947,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mamouneyya.SouqTask;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SouqTask/Application/SouqTask-Bridging-Header.h";
 			};
 			name = Release;
 		};

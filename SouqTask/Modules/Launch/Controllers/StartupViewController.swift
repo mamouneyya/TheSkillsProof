@@ -17,27 +17,27 @@ class StartupViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Authenticator.onAuthorize = { parameters in
-            print("Did authorize with parameters: \(parameters)")
+        //Authenticator.onAuthorize = { parameters in
+            //print("Did authorize with parameters: \(parameters)")
             
-            // TODO: ...
+            //// TODO: ...
             
-            AppDelegate.sharedAppDelegate()?.changeRootViewController(StoryboardScene.Main.instanciateMain())
-        }
+            //AppDelegate.sharedAppDelegate()?.changeRootViewController(StoryboardScene.Main.instanciateMain())
+        //}
         
-        Authenticator.onFailure = { error in
-            if let error = error {
-                print("Authorization went wrong: \(error)")
-            } else {
-                print("Authorization went wrong.")
-            }
+        //Authenticator.onFailure = { error in
+            //if let error = error {
+                //print("Authorization went wrong: \(error)")
+            //} else {
+                //print("Authorization went wrong.")
+            //}
 
-            // TODO: ...
+            //// TODO: ...
             
-            AppDelegate.sharedAppDelegate()?.changeRootViewController(StoryboardScene.Main.instanciateMain())
-        }
+            //AppDelegate.sharedAppDelegate()?.changeRootViewController(StoryboardScene.Main.instanciateMain())
+        //}
         
-        Authenticator.authorizeEmbeddedFrom(self.navigationController!)
+        //Authenticator.authorizeEmbeddedFrom(self.navigationController!)
     }
     
     override func viewWillAppear(animated: Bool) {

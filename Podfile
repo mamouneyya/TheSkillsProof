@@ -10,6 +10,7 @@ pod 'ObjectMapper', '~> 1.1'
 pod 'p2.OAuth2', '~> 2.2'
 pod 'OAuthSwift', '~> 0.5.0'
 pod 'AASquaresLoading', '~> 0.3'
+pod 'SwiftyUserDefaults', '~> 2.1'
 
 end
 
