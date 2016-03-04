@@ -9,7 +9,7 @@
 import UIKit
 import AASquaresLoading
 
-class Utility: NSObject {
+class Utility {
 
     // MARK: Vars
     
@@ -19,20 +19,48 @@ class Utility: NSObject {
     // MARK: Lifecycle
     
     //This prevents others from using the default '()' initializer for this class.
-    private override init() {}
+    private init() {}
     
     // MARK: - Loading Indicator
     
+    /**
+        Show loading indicator in the selected view.
+    
+        - parameter view: The view to add the indicator to.
+    */
     class func showLoadingHUD(view: UIView) {
         view.squareLoading.start(0.0)
     }
-    
+
+    /**
+        Hide loading indicator that was previously added through `showLoadingHUD()`.
+         
+        - parameter view: The view to remove the indicator from.
+    */
     class func hideLoadingHUD(view: UIView) {
         view.squareLoading.stop(0.0)
     }
     
     // MARK: - Alerts
+
+    /**
+        Show alert message from a specific error code.
+        
+        - parameter errorCode: Error code to use its friendlyMessage for the alert message.
+        - parameter target:    The view controller to present the alert from. If nil, the root view controller
+                               of the current active window will be used.
+    */
+    class func showMessageAlert(errorCode: Error.Code, target: UIViewController? = nil) {
+        showMessageAlert(errorCode.friendlyMessage, target: target)
+    }
     
+    /**
+        Show alert message.
+         
+        - parameter message: Message to show in the alert.
+        - parameter target:  The view controller to present the alert from. If nil, the root view controller
+                             of the current active window will be used.
+    */
     class func showMessageAlert(message: String, target: UIViewController? = nil) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
@@ -46,6 +74,14 @@ class Utility: NSObject {
         }
     }
     
+    /**
+        Show alert message with confirmation button (Yes, Cancel).
+         
+        - parameter message: Message to show in the alert.
+        - parameter target:  The view controller to present the alert from. If nil, the root view controller
+                             of the current active window will be used.
+        - parameter action:  Closure to run in case user tapped `Yes`.
+    */
     class func showConfirmationAlert(message: String, target: UIViewController? = nil, action: () -> ()) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 
 /**
  Types adopting the `RequestConfigurations` protocol can be used to intialize Router, which is used to construct URL requests.

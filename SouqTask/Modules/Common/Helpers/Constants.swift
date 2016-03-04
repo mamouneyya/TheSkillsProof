@@ -37,14 +37,28 @@ struct OAuthSettings {
 // MARK: - Reusable Views
 
 struct Identifiers {
-    static let productCell    = "ListProduct"
-    static let favoritedCell  = "FavoritedProduct"
+    struct TableCells {
+        static let Favorited   = "FavoritedProduct"
+        static let Product     = "ListProduct"
+        static let ProductType = "ProductType"
+    }
+    struct CollectionCells {
+
+    }
+}
+
+// MARK: - Messages
+
+struct Messages {
+    static let NoInternetConnection = "No access to the internet. Please check your connection and try again."
+    static let UnknownError         = "Something went wrong. Please try again in a minute."
 }
 
 // MARK: - Appearance Assets
 
-struct AppColor {
+struct Colors {
     static let mainTint = UIColor(red:0.0/255.0, green:138.0/255.0, blue:255.0/255.0, alpha:1.0)
+    static let Text = UIColor(red:36.0/255.0, green:36.0/255.0, blue:36.0/255.0, alpha:1.0)
 }
 
 // MARK: - Performance Logging Helpers
