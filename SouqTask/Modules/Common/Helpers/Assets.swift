@@ -57,6 +57,11 @@ struct StoryboardScene {
             return StoryboardScene.Main.FavoritesNavigationScene.viewController() as! UINavigationController
         }
         
+        case InitialSetupNavigationScene = "InitialSetupNavigation"
+        static func instanciateInitialSetupNavigation() -> UINavigationController {
+            return StoryboardScene.Main.InitialSetupNavigationScene.viewController() as! UINavigationController
+        }
+        
         case LoginScene = "Login"
         static func instanciateLogin() -> LoginTableViewController {
             return StoryboardScene.Main.LoginScene.viewController() as! LoginTableViewController
@@ -65,6 +70,11 @@ struct StoryboardScene {
         case MainScene = "Main"
         static func instanciateMain() -> UITabBarController {
             return StoryboardScene.Main.MainScene.viewController() as! UITabBarController
+        }
+        
+        case ProductTypesScene = "ProductTypes"
+        static func instanciateProductTypes() -> ProductTypesViewController {
+            return StoryboardScene.Main.ProductTypesScene.viewController() as! ProductTypesViewController
         }
         
         case ProductsScene = "Products"

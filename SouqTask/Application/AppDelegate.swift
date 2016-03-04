@@ -16,7 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+
+        setupAppearance()
+        
+        if Defaults[.InitialSetupDone] == false {
+            changeRootToInitialSetup()
+        }
+    
         return true
     }
 
@@ -44,8 +50,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - Helpers
     
+    /**
+        Shortcut to get the shared app delegate.
+
+        - Returns: The shared application delegate as AppDelegate object.
+    */
     class func sharedAppDelegate() -> AppDelegate? {
         return UIApplication.sharedApplication().delegate as? AppDelegate
+    }
+    
+    // MARK: - Appearance
+
+    /**
+        Setup system components through appearance proxy.
+    */
+    func setupAppearance() {
+        self.window?.backgroundColor = UIColor.whiteColor()
+        
+        UINavigationBar.appearance().translucent = false
+        UINavigationBar.appearance().barTintColor = UIColor(red:38.0/255.0, green:41.0/255.0, blue:51.0/255.0, alpha:1.0)
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        UINavigationBar.appearance().titleTextAttributes = [
+            NSForegroundColorAttributeName: UIColor.whiteColor(),
+            //NSFontAttributeName: AppFont.SemiBold.Size(17)
+        ]
+        
+        UIBarButtonItem.appearance().tintColor = UIColor.whiteColor()
+
+        UITableView.appearance().backgroundColor = UIColor(red: 0.9333, green: 0.9373, blue: 0.9373, alpha: 1.0)
+        UITableView.appearance().separatorColor  = UIColor(red: 0.8353, green: 0.84, blue: 0.8399, alpha: 1.0)
+        UITableView.appearance().separatorInset  = UIEdgeInsetsMake(0, 15, 0, 15)
+        
+        let tableCellSelectionView = UIView()
+        tableCellSelectionView.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.0)
+        UITableViewCell.appearance().selectedBackgroundView = tableCellSelectionView
+        UITableViewCell.appearance().tintColor = UIColor.whiteColor()
     }
     
     // MARK: - Deep Linking
@@ -69,16 +108,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: - Navigation
 
-    func changeRootViewController(destinationViewController: UIViewController, fancyAnimation: Bool = false) {
+    /**
+        Change window's root view controller to the selected destination.
+        
+        - Parameter destinationViewController:  The new root view controller to use.
+        - Parameter animated:                   Whether the change should be animated.
+        - Parameter fancy:                      If animated, passing true to this parameter will animate the 
+                                                controller in a fancy way.
+    */
+    func changeRootViewController(destinationViewController: UIViewController, animated: Bool = true, fancy: Bool = false) {
         let snapshot:UIView = (self.window?.snapshotViewAfterScreenUpdates(true))!
         destinationViewController.view.addSubview(snapshot)
         
         self.window?.rootViewController = destinationViewController
         
-        UIView.animateWithDuration(0.3, animations: {() in
+        UIView.animateWithDuration(animated ? 0.3 : 0.0, animations: {() in
             snapshot.layer.opacity = 0;
             
-            if fancyAnimation {
+            if fancy {
                 snapshot.layer.transform = CATransform3DMakeScale(1.5, 1.5, 1.5)
             }
             
@@ -88,5 +135,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
     }
 
-}
+    /**
+         Change window's root view controller to the home (main tab bar controller).
+     
+         - Parameter animated:  Whether the change should be animated.
+         - Parameter fancy:     If animated, passing true to this parameter will animate the controller in a fancy way.
+    */
+    func changeRootToHome(animated animated: Bool = true, fancy: Bool = false) {
+        changeRootViewController(StoryboardScene.Main.instanciateMain(), animated: animated, fancy: fancy)
+    }
 
+    /**
+         Change window's root view controller to the initial setup screen (on app first launch).
+         
+         - Parameter animated:  Whether the change should be animated.
+         - Parameter fancy:     If animated, passing true to this parameter will animate the controller in a fancy way.
+    */
+    func changeRootToInitialSetup(animated animated: Bool = true, fancy: Bool = false) {
+        changeRootViewController(StoryboardScene.Main.instanciateInitialSetupNavigation(), animated: animated, fancy: fancy)
+    }
+
+}
