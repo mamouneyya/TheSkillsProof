@@ -60,6 +60,29 @@ struct Colors {
     static let Text = UIColor(red:36.0/255.0, green:36.0/255.0, blue:36.0/255.0, alpha:1.0)
 }
 
+// MARK: - Fonts
+
+private let familyName = "SFUIText"
+
+enum AppFont: String {
+    case Light    = "Light"
+    case Regular  = "Regular"
+    case SemiBold = "Semibold"
+    case Bold     = "Bold"
+    
+    func Size(size: CGFloat) -> UIFont {
+        if let font = UIFont(name: fullFontName, size: size + 1.0) {
+            return font
+        }
+        
+        fatalError("Font '\(fullFontName)' does not exist.")
+    }
+    
+    private var fullFontName: String {
+        return rawValue.isEmpty ? familyName : familyName + "-" + rawValue
+    }
+}
+
 // MARK: - Performance Logging Helpers
 
 var startTime = NSDate()

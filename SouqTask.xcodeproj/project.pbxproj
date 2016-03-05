@@ -38,6 +38,10 @@
 		B96B31891C8718A6003CEAD3 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96B31701C8718A6003CEAD3 /* ProductCollectionViewCell.swift */; };
 		B96B31971C8730C4003CEAD3 /* ProductRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96B31961C8730C4003CEAD3 /* ProductRouter.swift */; };
 		B9D3D8A71C8B239E008BCBB8 /* Ext-String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D3D8A61C8B239E008BCBB8 /* Ext-String.swift */; };
+		B9D3D8AD1C8B2830008BCBB8 /* SF-UI-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B9D3D8A91C8B2830008BCBB8 /* SF-UI-Text-Bold.otf */; };
+		B9D3D8AE1C8B2830008BCBB8 /* SF-UI-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = B9D3D8AA1C8B2830008BCBB8 /* SF-UI-Text-Light.otf */; };
+		B9D3D8AF1C8B2830008BCBB8 /* SF-UI-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B9D3D8AB1C8B2830008BCBB8 /* SF-UI-Text-Regular.otf */; };
+		B9D3D8B01C8B2830008BCBB8 /* SF-UI-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B9D3D8AC1C8B2830008BCBB8 /* SF-UI-Text-Semibold.otf */; };
 		B9DECC211C884701002C79EF /* Serializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DECC201C884701002C79EF /* Serializer.swift */; };
 		B9DECC231C88A111002C79EF /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DECC221C88A111002C79EF /* Error.swift */; };
 		B9DECC251C88FDE0002C79EF /* ProductTypesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DECC241C88FDE0002C79EF /* ProductTypesViewController.swift */; };
@@ -104,6 +108,10 @@
 		B96B31701C8718A6003CEAD3 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		B96B31961C8730C4003CEAD3 /* ProductRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductRouter.swift; sourceTree = "<group>"; };
 		B9D3D8A61C8B239E008BCBB8 /* Ext-String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ext-String.swift"; sourceTree = "<group>"; };
+		B9D3D8A91C8B2830008BCBB8 /* SF-UI-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Bold.otf"; sourceTree = "<group>"; };
+		B9D3D8AA1C8B2830008BCBB8 /* SF-UI-Text-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Light.otf"; sourceTree = "<group>"; };
+		B9D3D8AB1C8B2830008BCBB8 /* SF-UI-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Regular.otf"; sourceTree = "<group>"; };
+		B9D3D8AC1C8B2830008BCBB8 /* SF-UI-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Semibold.otf"; sourceTree = "<group>"; };
 		B9DECC201C884701002C79EF /* Serializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serializer.swift; sourceTree = "<group>"; };
 		B9DECC221C88A111002C79EF /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		B9DECC241C88FDE0002C79EF /* ProductTypesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTypesViewController.swift; sourceTree = "<group>"; };
@@ -337,6 +345,7 @@
 			isa = PBXGroup;
 			children = (
 				B96B31581C8718A6003CEAD3 /* Images */,
+				B9D3D8A81C8B2830008BCBB8 /* Fonts */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -573,6 +582,17 @@
 			name = Others;
 			sourceTree = "<group>";
 		};
+		B9D3D8A81C8B2830008BCBB8 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B9D3D8A91C8B2830008BCBB8 /* SF-UI-Text-Bold.otf */,
+				B9D3D8AA1C8B2830008BCBB8 /* SF-UI-Text-Light.otf */,
+				B9D3D8AB1C8B2830008BCBB8 /* SF-UI-Text-Regular.otf */,
+				B9D3D8AC1C8B2830008BCBB8 /* SF-UI-Text-Semibold.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -680,9 +700,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9D3D8AE1C8B2830008BCBB8 /* SF-UI-Text-Light.otf in Resources */,
+				B9D3D8AD1C8B2830008BCBB8 /* SF-UI-Text-Bold.otf in Resources */,
+				B9D3D8AF1C8B2830008BCBB8 /* SF-UI-Text-Regular.otf in Resources */,
 				B96B31871C8718A6003CEAD3 /* FavoritedProductCell.xib in Resources */,
 				B96B317F1C8718A6003CEAD3 /* Main.storyboard in Resources */,
 				B96B31801C8718A6003CEAD3 /* Assets.xcassets in Resources */,
+				B9D3D8B01C8B2830008BCBB8 /* SF-UI-Text-Semibold.otf in Resources */,
 				B96B317E1C8718A6003CEAD3 /* LaunchScreen.storyboard in Resources */,
 				B96B31881C8718A6003CEAD3 /* FeedProductCell.xib in Resources */,
 			);
