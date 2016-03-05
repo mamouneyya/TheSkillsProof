@@ -19,6 +19,7 @@ class ProductCollectionViewCell: BaseCollectionViewCell {
     
     @IBOutlet weak var productTitleLabel: UILabel!
     @IBOutlet weak var productImageView: UIImageView!
+    @IBOutlet weak var borderMaskImageView: UIImageView!
     
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var deleteFavoriteButton: UIButton!
@@ -35,6 +36,8 @@ class ProductCollectionViewCell: BaseCollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        self.borderMaskImageView.image = UIImage.ResizableAsset.RoundedShadowMask.image
     }
 
     // MARK: - Update Views
@@ -49,12 +52,13 @@ class ProductCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - Actions
     
-    @IBAction func favoriteButtonTapped(sender: AnyObject) {
+    @IBAction func favoriteButtonTapped(sender: UIButton) {
         // TODO
+        sender.selected = !sender.selected
         print("favoriteButtonTapped:")
     }
     
-    @IBAction func deleteFavoriteButtonTapped(sender: AnyObject) {
+    @IBAction func deleteFavoriteButtonTapped(sender: UIButton) {
         // TODO
         print("deleteFavoriteButtonTapped:")
     }

@@ -37,11 +37,11 @@
 		B96B31881C8718A6003CEAD3 /* FeedProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B96B316F1C8718A6003CEAD3 /* FeedProductCell.xib */; };
 		B96B31891C8718A6003CEAD3 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96B31701C8718A6003CEAD3 /* ProductCollectionViewCell.swift */; };
 		B96B31971C8730C4003CEAD3 /* ProductRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96B31961C8730C4003CEAD3 /* ProductRouter.swift */; };
-		B9D3D8A71C8B239E008BCBB8 /* Ext-String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D3D8A61C8B239E008BCBB8 /* Ext-String.swift */; };
 		B9D3D8AD1C8B2830008BCBB8 /* SF-UI-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B9D3D8A91C8B2830008BCBB8 /* SF-UI-Text-Bold.otf */; };
 		B9D3D8AE1C8B2830008BCBB8 /* SF-UI-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = B9D3D8AA1C8B2830008BCBB8 /* SF-UI-Text-Light.otf */; };
 		B9D3D8AF1C8B2830008BCBB8 /* SF-UI-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B9D3D8AB1C8B2830008BCBB8 /* SF-UI-Text-Regular.otf */; };
 		B9D3D8B01C8B2830008BCBB8 /* SF-UI-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B9D3D8AC1C8B2830008BCBB8 /* SF-UI-Text-Semibold.otf */; };
+		B9D3D8B21C8B2A13008BCBB8 /* ProductAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9D3D8B11C8B2A13008BCBB8 /* ProductAssets.xcassets */; };
 		B9DECC211C884701002C79EF /* Serializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DECC201C884701002C79EF /* Serializer.swift */; };
 		B9DECC231C88A111002C79EF /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DECC221C88A111002C79EF /* Error.swift */; };
 		B9DECC251C88FDE0002C79EF /* ProductTypesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DECC241C88FDE0002C79EF /* ProductTypesViewController.swift */; };
@@ -107,11 +107,11 @@
 		B96B316F1C8718A6003CEAD3 /* FeedProductCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedProductCell.xib; sourceTree = "<group>"; };
 		B96B31701C8718A6003CEAD3 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		B96B31961C8730C4003CEAD3 /* ProductRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductRouter.swift; sourceTree = "<group>"; };
-		B9D3D8A61C8B239E008BCBB8 /* Ext-String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ext-String.swift"; sourceTree = "<group>"; };
 		B9D3D8A91C8B2830008BCBB8 /* SF-UI-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Bold.otf"; sourceTree = "<group>"; };
 		B9D3D8AA1C8B2830008BCBB8 /* SF-UI-Text-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Light.otf"; sourceTree = "<group>"; };
 		B9D3D8AB1C8B2830008BCBB8 /* SF-UI-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Regular.otf"; sourceTree = "<group>"; };
 		B9D3D8AC1C8B2830008BCBB8 /* SF-UI-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Semibold.otf"; sourceTree = "<group>"; };
+		B9D3D8B11C8B2A13008BCBB8 /* ProductAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = ProductAssets.xcassets; path = Images/ProductAssets.xcassets; sourceTree = "<group>"; };
 		B9DECC201C884701002C79EF /* Serializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serializer.swift; sourceTree = "<group>"; };
 		B9DECC221C88A111002C79EF /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		B9DECC241C88FDE0002C79EF /* ProductTypesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTypesViewController.swift; sourceTree = "<group>"; };
@@ -327,7 +327,6 @@
 			isa = PBXGroup;
 			children = (
 				B9DECC2D1C89EEDC002C79EF /* Ext-DefaultsKeys.swift */,
-				B9D3D8A61C8B239E008BCBB8 /* Ext-String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -516,6 +515,7 @@
 		B96B318E1C87199B003CEAD3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B9D3D8B31C8B2A19008BCBB8 /* Images */,
 			);
 			name = Resources;
 			path = SouqTask/Modules/Favorites/Resources;
@@ -591,6 +591,14 @@
 				B9D3D8AC1C8B2830008BCBB8 /* SF-UI-Text-Semibold.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		B9D3D8B31C8B2A19008BCBB8 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				B9D3D8B11C8B2A13008BCBB8 /* ProductAssets.xcassets */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -704,6 +712,7 @@
 				B9D3D8AD1C8B2830008BCBB8 /* SF-UI-Text-Bold.otf in Resources */,
 				B9D3D8AF1C8B2830008BCBB8 /* SF-UI-Text-Regular.otf in Resources */,
 				B96B31871C8718A6003CEAD3 /* FavoritedProductCell.xib in Resources */,
+				B9D3D8B21C8B2A13008BCBB8 /* ProductAssets.xcassets in Resources */,
 				B96B317F1C8718A6003CEAD3 /* Main.storyboard in Resources */,
 				B96B31801C8718A6003CEAD3 /* Assets.xcassets in Resources */,
 				B9D3D8B01C8B2830008BCBB8 /* SF-UI-Text-Semibold.otf in Resources */,
@@ -807,7 +816,6 @@
 				B96B31731C8718A6003CEAD3 /* BaseCollectionViewController.swift in Sources */,
 				B96B31971C8730C4003CEAD3 /* ProductRouter.swift in Sources */,
 				B96B31751C8718A6003CEAD3 /* BaseViewController.swift in Sources */,
-				B9D3D8A71C8B239E008BCBB8 /* Ext-String.swift in Sources */,
 				B96B31771C8718A6003CEAD3 /* Constants.swift in Sources */,
 				B9DECC271C88FE04002C79EF /* BaseTableViewCell.swift in Sources */,
 				B96B31831C8718A6003CEAD3 /* ProductsCollectionViewController.swift in Sources */,

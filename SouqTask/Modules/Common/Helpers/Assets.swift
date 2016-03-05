@@ -96,3 +96,33 @@ struct StoryboardScene {
 
 struct StoryboardSegue {
 }
+
+// MARK: - Asset Catalogs
+
+extension UIImage {
+    enum ResizableAsset: String {
+        case RoundedShadowMask = "rounded-shadow-mask"
+        
+        var image: UIImage {
+            return UIImage(resizableAsset: self).resizableImageWithCapInsets(capInsets, resizingMode: resizingMode)
+        }
+        
+        var capInsets: UIEdgeInsets {
+            switch self {
+            case .RoundedShadowMask:
+                return UIEdgeInsetsMake(8, 8, 8, 8)
+            }
+        }
+        
+        var resizingMode: UIImageResizingMode {
+            switch self {
+            case .RoundedShadowMask:
+                return .Stretch
+            }
+        }
+    }
+    
+    private convenience init!(resizableAsset: ResizableAsset) {
+        self.init(named: resizableAsset.rawValue)
+    }
+}
