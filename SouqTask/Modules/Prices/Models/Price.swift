@@ -20,6 +20,8 @@ class Price: Root {
         return "\(value) \(currency)"
     }
     
+    var trackedDate = ""
+    
     // MARK: - Lifecycle
     
     override init() {

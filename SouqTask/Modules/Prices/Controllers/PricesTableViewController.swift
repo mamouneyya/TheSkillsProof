@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProductTrackedPricesTableViewController: BaseTableViewController {
+class PricesTableViewController: BaseTableViewController {
 
     // MARK: - Vars
     
@@ -22,6 +22,24 @@ class ProductTrackedPricesTableViewController: BaseTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //TICK()
+        
+        for i in 0 ..< 55 {
+            Networker.request(Product.Request.getProduct(productId: "7278383"))
+                .responseObject(silent: true) { (response: Response<Product, NSError>) -> Void in
+                    switch response.result {
+                    case .Success(let data):
+                        print(data.price)
+                    case .Failure(_):
+                        print("Failure")
+                    }
+                    
+                    if i == 24 {
+                        TOCK()
+                    }
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,7 +56,7 @@ class ProductTrackedPricesTableViewController: BaseTableViewController {
 
 // MARK: - Table Data Source
 
-extension ProductTrackedPricesTableViewController {
+extension PricesTableViewController {
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1

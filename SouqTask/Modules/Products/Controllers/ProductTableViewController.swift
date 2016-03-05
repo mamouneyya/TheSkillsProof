@@ -69,7 +69,9 @@ class ProductTableViewController: BaseTableViewController {
     }
     
     private func goToAllPreviousPrices() {
-        
+        let pricesController = StoryboardScene.Main.instanciateProductPrices()
+            pricesController.product = self.product
+        self.navigationController?.pushViewController(pricesController, animated: true)
     }
 
 }
@@ -91,7 +93,7 @@ extension ProductTableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.section == 2 && indexPath.row == 1 {
+        if indexPath.section == 1 && indexPath.row == 1 {
             goToAllPreviousPrices()
         }
     }

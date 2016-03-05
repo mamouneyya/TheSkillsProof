@@ -189,16 +189,16 @@
             </objects>
             <point key="canvasLocation" x="2351" y="31"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Prices Table View Controller-->
         <scene sceneID="U2a-RC-b6S">
             <objects>
-                <tableViewController id="2lp-PV-10z" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ProductPrices" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2lp-PV-10z" customClass="PricesTableViewController" customModule="SouqTask" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="HCZ-Rk-Cvc">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="price" rowHeight="55" id="89p-wd-Upr">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="price" rowHeight="55" id="89p-wd-Upr" customClass="PriceTableViewCell" customModule="SouqTask" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="600" height="55"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="89p-wd-Upr" id="OQc-H5-Xbi">
@@ -229,6 +229,10 @@
                                         <constraint firstItem="CFz-CE-YU9" firstAttribute="top" secondItem="OQc-H5-Xbi" secondAttribute="top" constant="8" id="u4f-eV-6Mc"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dateLabel" destination="fv0-fL-30P" id="atl-a3-iWz"/>
+                                    <outlet property="priceLabel" destination="CFz-CE-YU9" id="00h-EY-tiQ"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

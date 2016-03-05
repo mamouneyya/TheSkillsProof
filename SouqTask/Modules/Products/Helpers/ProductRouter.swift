@@ -15,7 +15,7 @@ extension Product {
         case getProductTypes(offset: Int)
         case getProducts(productTypeIds: [String], offset: Int)
         case getProductsOfSelectedTypes(offset: Int)
-        case getProduct
+        case getProduct(productId: String)
         
         /***************************
          **  (1)  Request Result  **
@@ -53,13 +53,12 @@ extension Product {
                 path       = result.path
                 parameters = result.parameters
                 
-            case .getProduct:
-                path = "products"
+            case .getProduct(let productId):
+                path = "products/\(productId)"
                 parameters = [
-                    "product_id"      : "",
-                    "show_offers"     : false,
-                    "show_attributes" : false,
-                    "show_variations" : false,
+                    "show_offers"     : 0,
+                    "show_attributes" : 0,
+                    "show_variations" : 0,
                     "country"         : RouterConfigurations.country,
                     "language"        : RouterConfigurations.language,
                     "format"          : RouterConfigurations.format

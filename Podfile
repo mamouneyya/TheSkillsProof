@@ -11,6 +11,7 @@ pod 'p2.OAuth2', '~> 2.2'
 pod 'OAuthSwift', '~> 0.5.0'
 pod 'AASquaresLoading', '~> 0.3'
 pod 'SwiftyUserDefaults', '~> 2.1'
+pod 'SwiftyDB', '~> 1.0'
 pod 'UIScrollView-InfiniteScroll', '~> 0.7'
 
 end

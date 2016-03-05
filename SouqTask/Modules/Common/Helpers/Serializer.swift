@@ -16,21 +16,25 @@ extension Request {
 
     // MARK: - Response Serializers
     
-    public static func ObjectMapperSerializer<T: Mappable>(keyPath: String?) -> ResponseSerializer<T, NSError> {
+    public static func ObjectMapperSerializer<T: Mappable>(keyPath: String?, silent: Bool = false) -> ResponseSerializer<T, NSError> {
         return ResponseSerializer { request, response, data, error in
             guard error == nil else {
-                dispatch_async(dispatch_get_main_queue()) {
-                    // TODO needs a more sophisticated error handling
-                    Utility.showMessageAlert(.SouqRequestFailed)
+                if !silent {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        // TODO needs a more sophisticated error handling
+                        Utility.showMessageAlert(.SouqRequestFailed)
+                    }
                 }
                 
                 return .Failure(error!)
             }
             
             guard let _ = data else {
-                dispatch_async(dispatch_get_main_queue()) {
-                    // TODO needs a more sophisticated error handling
-                    Utility.showMessageAlert(.SouqRequestFailed)
+                if !silent {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        // TODO needs a more sophisticated error handling
+                        Utility.showMessageAlert(.SouqRequestFailed)
+                    }
                 }
                 
                 let failureReason = "Data could not be serialized. Input data was nil."
@@ -44,7 +48,7 @@ extension Request {
             // even if the request technically succeed, we still need to check
             // whether the server considers it as valid. So we need to check meta
             // data of the response object, and show any error message to the user
-            if !Request.validateResponseErrorsInBody(result.value) {
+            if !Request.validateResponseErrorsInBody(result.value, silent: silent) {
                 let failureReason = "Unkown error."
                 let error = Error.errorWithCode(.SouqRequestFailed, failureReason: failureReason)
                 return .Failure(error)
@@ -61,9 +65,11 @@ extension Request {
                 return .Success(parsedObject)
             }
 
-            dispatch_async(dispatch_get_main_queue()) {
-                // TODO needs a more sophisticated error handling
-                Utility.showMessageAlert(.SouqRequestFailed)
+            if !silent {
+                dispatch_async(dispatch_get_main_queue()) {
+                    // TODO needs a more sophisticated error handling
+                    Utility.showMessageAlert(.SouqRequestFailed)
+                }
             }
             
             let failureReason = "ObjectMapper failed to serialize response."
@@ -81,25 +87,29 @@ extension Request {
 
         - returns: The request.
      */
-    public func responseObject<T: Mappable>(keyPath: String? = "data", completionHandler: Response<T, NSError> -> Void) -> Self {
-        return response(queue: nil, responseSerializer: Request.ObjectMapperSerializer(keyPath), completionHandler: completionHandler)
+    public func responseObject<T: Mappable>(keyPath: String? = "data", silent: Bool = false, completionHandler: Response<T, NSError> -> Void) -> Self {
+        return response(queue: nil, responseSerializer: Request.ObjectMapperSerializer(keyPath, silent: silent), completionHandler: completionHandler)
     }
     
-    public static func ObjectMapperArraySerializer<T: Mappable>(keyPath: String?) -> ResponseSerializer<[T], NSError> {
+    public static func ObjectMapperArraySerializer<T: Mappable>(keyPath: String?, silent: Bool = false) -> ResponseSerializer<[T], NSError> {
         return ResponseSerializer { request, response, data, error in
             guard error == nil else {
-                dispatch_async(dispatch_get_main_queue()) {
-                    // TODO needs a more sophisticated error handling
-                    Utility.showMessageAlert(.SouqRequestFailed)
+                if !silent {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        // TODO needs a more sophisticated error handling
+                        Utility.showMessageAlert(.SouqRequestFailed)
+                    }
                 }
                 
                 return .Failure(error!)
             }
             
             guard let _ = data else {
-                dispatch_async(dispatch_get_main_queue()) {
-                    // TODO needs a more sophisticated error handling
-                    Utility.showMessageAlert(.SouqRequestFailed)
+                if !silent {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        // TODO needs a more sophisticated error handling
+                        Utility.showMessageAlert(.SouqRequestFailed)
+                    }
                 }
                 
                 let failureReason = "Data could not be serialized. Input data was nil."
@@ -113,7 +123,7 @@ extension Request {
             // even if the request technically succeed, we still need to check
             // whether the server considers it as valid. So we need to check meta
             // data of the response object, and show any error message to the user
-            if !Request.validateResponseErrorsInBody(result.value) {
+            if !Request.validateResponseErrorsInBody(result.value, silent: silent) {
                 let failureReason = "Unkown error."
                 let error = Error.errorWithCode(.SouqRequestFailed, failureReason: failureReason)
                 return .Failure(error)
@@ -130,9 +140,11 @@ extension Request {
                 return .Success(parsedObject)
             }
             
-            dispatch_async(dispatch_get_main_queue()) {
-                // TODO needs a more sophisticated error handling
-                Utility.showMessageAlert(.SouqRequestFailed)
+            if !silent {
+                dispatch_async(dispatch_get_main_queue()) {
+                    // TODO needs a more sophisticated error handling
+                    Utility.showMessageAlert(.SouqRequestFailed)
+                }
             }
             
             let failureReason = "ObjectMapper failed to serialize response."
@@ -150,8 +162,8 @@ extension Request {
          
         - returns: The request.
     */
-    public func responseArray<T: Mappable>(keyPath: String? = "data", completionHandler: Response<[T], NSError> -> Void) -> Self {
-        return response(queue: nil, responseSerializer: Request.ObjectMapperArraySerializer(keyPath), completionHandler: completionHandler)
+    public func responseArray<T: Mappable>(keyPath: String? = "data", silent: Bool = false, completionHandler: Response<[T], NSError> -> Void) -> Self {
+        return response(queue: nil, responseSerializer: Request.ObjectMapperArraySerializer(keyPath, silent: silent), completionHandler: completionHandler)
     }
     
     // MARK: - Error Handlers
@@ -165,7 +177,7 @@ extension Request {
         
         - returns: Whether server considered the request as successful.
     */
-    public static func validateResponseErrorsInBody(responseData: AnyObject!, showAlertWithError: Bool = true) -> Bool {
+    public static func validateResponseErrorsInBody(responseData: AnyObject!, silent: Bool = false) -> Bool {
         guard (responseData != nil) else { return false }
         
         let metaFields    = responseData.valueForKeyPath("meta")
@@ -174,7 +186,7 @@ extension Request {
         let success       = responseField == "OK"
         
         if let messageField = messageField where !success {
-            if showAlertWithError {
+            if !silent {
                 dispatch_async(dispatch_get_main_queue()) {
                     Utility.showMessageAlert(messageField)
                 }
