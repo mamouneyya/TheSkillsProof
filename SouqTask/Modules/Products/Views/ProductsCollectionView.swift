@@ -35,9 +35,11 @@ enum ProductsListConfigurationsSet {
 
 class ProductsCollectionView: UICollectionView {
 
-    // MARK: - Public Vars
-    
     // MARK: - Private Vars
+    
+    /////////////
+    // DATA STUFF
+    /////////////
     
     /// Configurations set of the data / appearance
     private var configurationsSet = ProductsListConfigurationsSet.All {
@@ -54,9 +56,6 @@ class ProductsCollectionView: UICollectionView {
     
     /// Main view controller, to use in case of navigation action
     private var mainController: UIViewController?
-    
-    /// Router to use for API calls
-    //private var APIRouter: Router!
     
     // MARK: - Lifecycle
     
