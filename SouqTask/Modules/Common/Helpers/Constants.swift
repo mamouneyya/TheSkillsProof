@@ -18,7 +18,7 @@ struct APIPaths {
 
 struct RouterConfigurations {
     static let baseURLString  = APIPaths.Base
-    static let resultsPerPage = 15
+    static let resultsPerPage = 20
 
     static let format   = "json" // "json", "xml"
     static let language = "en"   // "en", "ar"
