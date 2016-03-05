@@ -18,23 +18,6 @@ class ProductTypesViewController: BaseViewController {
     /// Next Button.
     @IBOutlet weak var nextButton: UIButton!
     
-    /// Table's footer view to be shown while loading more results, created when needed.
-    lazy var footerView: UIView = {
-        let view = UIView(frame: CGRectMake(0, 0, self.view.bounds.width, 100))
-
-        self.footerActivityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
-        self.footerActivityIndicator!.center = view.center
-        self.footerActivityIndicator!.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-        self.footerActivityIndicator!.translatesAutoresizingMaskIntoConstraints = true
-        
-        view.addSubview(self.footerActivityIndicator!)
-        
-        return view
-    }()
-
-    /// Reference to activity indicator of load more view in table's footer.
-    var footerActivityIndicator: UIActivityIndicatorView?
-    
     // MARK: - Private Vars
     
     /////////////
@@ -75,6 +58,23 @@ class ProductTypesViewController: BaseViewController {
             }
         }
     }
+    
+    /// Table's footer view to be shown while loading more results, created when needed.
+    private lazy var footerView: UIView = {
+        let view = UIView(frame: CGRectMake(0, 0, self.view.bounds.width, 100))
+        
+        self.footerActivityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+        self.footerActivityIndicator!.center = view.center
+        self.footerActivityIndicator!.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        self.footerActivityIndicator!.translatesAutoresizingMaskIntoConstraints = true
+        
+        view.addSubview(self.footerActivityIndicator!)
+        
+        return view
+    }()
+    
+    /// Reference to activity indicator of load more view in table's footer.
+    private var footerActivityIndicator: UIActivityIndicatorView?
     
     // MARK: - Lifecycle
     
