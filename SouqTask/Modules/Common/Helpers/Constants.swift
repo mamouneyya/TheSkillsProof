@@ -22,7 +22,7 @@ struct RouterConfigurations {
 
     static let format   = "json" // "json", "xml"
     static let language = "en"   // "en", "ar"
-    static let country  = "ea"   // "ea", "sa"
+    static let country  = "ae"   // "ae", "sa"
 }
 
 struct OAuthSettings {
