@@ -87,6 +87,8 @@ class ProductTypesViewController: BaseViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+
+    // MARK: - Private Methods
     
     // MARK: - API
     
@@ -150,7 +152,9 @@ class ProductTypesViewController: BaseViewController {
     // MARK: - Helpers
     
     /**
-        TODO Before reload table view, this function shoud check for cases like if we have no items to display whether because of an error while fetching data from server, or simply because we have no items currently, etc.
+        TODO    Before reload table view, this function shoud check for cases like if we have no items to display
+                whether because of an error while fetching data from server, or simply because we have no items
+                currently, etc.
     */
     private func reloadTableView() {
         self.tableView.reloadData()

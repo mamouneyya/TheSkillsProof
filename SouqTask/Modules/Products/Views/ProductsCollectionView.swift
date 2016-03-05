@@ -57,6 +57,13 @@ class ProductsCollectionView: UICollectionView {
     /// Main view controller, to use in case of navigation action
     private var mainController: UIViewController?
     
+    ///////////////////
+    // PAGINATION STUFF
+    ///////////////////
+    
+    /// Current page / offset.
+    private var currentOffset = 1
+    
     // MARK: - Lifecycle
     
     deinit {
@@ -66,15 +73,21 @@ class ProductsCollectionView: UICollectionView {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        registerCellNibs()
-        
-        initializeLayout()
-        initializeCollectionView()
-        
+        initialize()
         addObservers()
     }
     
     // MARK: - Initializing
+
+    /**
+        Initialize everything before really using the components (e.g. register cell nibs, initialize layouts, etc.).
+    */
+    func initialize() {
+        registerCellNibs()
+        
+        initializeLayout()
+        initializeCollectionView()
+    }
     
     /**
         Register reusable collection view's cells nib files, so they can be dequeued.
@@ -102,32 +115,90 @@ class ProductsCollectionView: UICollectionView {
     func initializeCollectionView() {
         self.dataSource = self
         self.delegate   = self
+        
+        addInfiniteScroll()
+    }
+    
+    /**
+        Add infinite scrolling capability to the collection view, with the action to fire `getMoreProducts('////'//)`.
+    */
+    func addInfiniteScroll() {
+        self.addInfiniteScrollWithHandler { (scrollView) -> Void in
+            self.getMoreProducts()
+        }
     }
     
     // MARK: - Public Methods
     
-    func getProducts(configurationsSet configurationsSet: ProductsListConfigurationsSet, target: AnyObject? = nil) {
+    // MARK: - Data
+    
+    /**
+        This method internally calls API methods and configure everything so the data gets fetched and displayed as it should be for the desired configurations.
+        
+        - Parameter configurationsSet:  Desired configuration set to use for configuring layout / API calls, etc.
+        - Parameter target:             The view controller to show the collection view from, in case of needing
+                                        any navigation action. If nil, some actions, if exists, may lost its 
+                                        expected behaviours.
+    */
+    func loadData(configurationsSet configurationsSet: ProductsListConfigurationsSet, target: AnyObject? = nil) {
         self.configurationsSet = configurationsSet
         self.mainController = target as? UIViewController
         
-        Networker.request(Product.Request.getProductsOfSelectedTypes(offset: 1))
-            .responseArray("data.products") { (response: Response<[Product], NSError>) in
-                
-            switch response.result {
-            case .Success(let data):
-                print("Success")
-                print(data)
-                self.products = data
-            case .Failure(let error):
-                print("Failure")
-                print(error)
-            }
-                
-            self.reloadData()
-        }
+        getProducts()
     }
     
     // MARK: - Private Methods
+    
+    // MARK: - API
+    
+    /**
+        Get an array of all products from the server, paginated by the offset parameter. It adds the results array, is succeeded to the controller products array, and fires reloadTableView().
+        
+        - Parameter offset: The current page / offset. If not passed, default value is Zero.
+    */
+    private func getProducts(offset: Int = 1) {
+        Networker.request(Product.Request.getProductsOfSelectedTypes(offset: offset))
+            .responseArray("data.products") { (response: Response<[Product], NSError>) in
+                
+                switch response.result {
+                case .Success(let data):
+                    if offset == 1 {
+                        self.products.removeAll()
+                        self.products = data
+                        
+                        self.reloadData()
+                        
+                    } else {
+                        var indexPathsToInsert = [NSIndexPath]()
+                        for rowOffset in 0 ..< data.count {
+                            let row = self.products.count + rowOffset
+                            indexPathsToInsert.append(NSIndexPath(forRow: row, inSection: 0))
+                        }
+                        
+                        self.products += data
+                        
+                        self.performBatchUpdates({ () -> Void in
+                            self.insertItemsAtIndexPaths(indexPathsToInsert)
+                          
+                            }, completion: { (finished) -> Void in
+                                self.finishInfiniteScroll()
+                        })
+                    }
+
+                case .Failure(let error):
+                    print("Failure")
+                    print(error)
+                }
+        }
+    }
+    
+    /**
+        Fetch more results from the server until they're all fetched.
+    */
+    private func getMoreProducts() {
+        self.currentOffset += 1
+        getProducts(self.currentOffset)
+    }
     
     /**
         Update the view configurations, including layout, data sources, etc.
@@ -141,6 +212,17 @@ class ProductsCollectionView: UICollectionView {
         case .Favorited:
             self.productCellIdentifier = Identifiers.CollectionCells.Favorited
         }
+    }
+    
+    // MARK: - Helpers
+    
+    /**
+        TODO    Before reload collection view, this function shoud check for cases like if we have no items to
+                display whether because of an error while fetching data from server, or simply because we have 
+                no items currently, etc.
+    */
+    private func reload() {
+        self.reloadData()
     }
     
     // MARK: - KVO

@@ -92,6 +92,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-SouqTask/ObjectMapper.framework"
   install_framework "Pods-SouqTask/SwiftKeychain.framework"
   install_framework "Pods-SouqTask/SwiftyUserDefaults.framework"
+  install_framework "Pods-SouqTask/UIScrollView_InfiniteScroll.framework"
   install_framework "Pods-SouqTask/p2_OAuth2.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -103,5 +104,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-SouqTask/ObjectMapper.framework"
   install_framework "Pods-SouqTask/SwiftKeychain.framework"
   install_framework "Pods-SouqTask/SwiftyUserDefaults.framework"
+  install_framework "Pods-SouqTask/UIScrollView_InfiniteScroll.framework"
   install_framework "Pods-SouqTask/p2_OAuth2.framework"
 fi

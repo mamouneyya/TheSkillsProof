@@ -13,3 +13,4 @@
 @import AlamofireImage;
 @import ObjectMapper;
 @import SwiftyUserDefaults;
+@import UIScrollView_InfiniteScroll;
