@@ -142,7 +142,7 @@ class ProductsCollectionView: UICollectionView {
     */
     func loadData(configurationsSet configurationsSet: ProductsListConfigurationsSet, target: AnyObject? = nil) {
         self.configurationsSet = configurationsSet
-        self.mainController = target as? UIViewController
+        self.mainController    = target as? UIViewController
         
         getProducts()
     }
@@ -157,8 +157,16 @@ class ProductsCollectionView: UICollectionView {
         - Parameter offset: The current page / offset. If not passed, default value is Zero.
     */
     private func getProducts(offset: Int = 1) {
+        if offset == 1 {
+            Utility.showLoadingHUD(self)
+        }
+        
         Networker.request(Product.Request.getProductsOfSelectedTypes(offset: offset))
             .responseArray("data.products") { (response: Response<[Product], NSError>) in
+
+                if offset == 1 {
+                    Utility.hideLoadingHUD(self)
+                }
                 
                 switch response.result {
                 case .Success(let data):
