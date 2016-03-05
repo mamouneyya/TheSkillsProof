@@ -38,12 +38,11 @@ struct OAuthSettings {
 
 struct Identifiers {
     struct TableCells {
-        static let Favorited   = "FavoritedProduct"
-        static let Product     = "ListProduct"
         static let ProductType = "ProductType"
     }
     struct CollectionCells {
-
+        static let Product     = "ListProduct"
+        static let Favorited   = "FavoritedProduct"
     }
 }
 

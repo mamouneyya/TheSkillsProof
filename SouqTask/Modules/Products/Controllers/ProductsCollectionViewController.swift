@@ -13,7 +13,7 @@ class ProductsCollectionViewController: BaseCollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        (self.collectionView as? ProductsCollectionView)?.getProducts(configurationsSet: .All, target: self)
     }
 
     override func didReceiveMemoryWarning() {

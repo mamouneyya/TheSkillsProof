@@ -19,15 +19,19 @@ extension Request {
     public static func ObjectMapperSerializer<T: Mappable>(keyPath: String?) -> ResponseSerializer<T, NSError> {
         return ResponseSerializer { request, response, data, error in
             guard error == nil else {
-                // TODO needs a more sophisticated error handling
-                Utility.showMessageAlert(.SouqRequestFailed)
+                dispatch_async(dispatch_get_main_queue()) {
+                    // TODO needs a more sophisticated error handling
+                    Utility.showMessageAlert(.SouqRequestFailed)
+                }
                 
                 return .Failure(error!)
             }
             
             guard let _ = data else {
-                // TODO needs a more sophisticated error handling
-                Utility.showMessageAlert(.SouqRequestFailed)
+                dispatch_async(dispatch_get_main_queue()) {
+                    // TODO needs a more sophisticated error handling
+                    Utility.showMessageAlert(.SouqRequestFailed)
+                }
                 
                 let failureReason = "Data could not be serialized. Input data was nil."
                 let error = Alamofire.Error.errorWithCode(.DataSerializationFailed, failureReason: failureReason)
@@ -41,7 +45,7 @@ extension Request {
             // whether the server considers it as valid. So we need to check meta
             // data of the response object, and show any error message to the user
             if !Request.validateResponseErrorsInBody(result.value) {
-                let failureReason = "Data could not be serialized. Input data was nil."
+                let failureReason = "Unkown error."
                 let error = Error.errorWithCode(.SouqRequestFailed, failureReason: failureReason)
                 return .Failure(error)
             }
@@ -53,12 +57,14 @@ extension Request {
                 JSONToMap = result.value
             }
             
-            if let parsedObject = Mapper<T>().map(JSONToMap){
+            if let parsedObject = Mapper<T>().map(JSONToMap) {
                 return .Success(parsedObject)
             }
-            
-            // TODO needs a more sophisticated error handling
-            Utility.showMessageAlert(.SouqRequestFailed)
+
+            dispatch_async(dispatch_get_main_queue()) {
+                // TODO needs a more sophisticated error handling
+                Utility.showMessageAlert(.SouqRequestFailed)
+            }
             
             let failureReason = "ObjectMapper failed to serialize response."
             let error = Alamofire.Error.errorWithCode(.DataSerializationFailed, failureReason: failureReason)
@@ -82,15 +88,19 @@ extension Request {
     public static func ObjectMapperArraySerializer<T: Mappable>(keyPath: String?) -> ResponseSerializer<[T], NSError> {
         return ResponseSerializer { request, response, data, error in
             guard error == nil else {
-                // TODO needs a more sophisticated error handling
-                Utility.showMessageAlert(.SouqRequestFailed)
+                dispatch_async(dispatch_get_main_queue()) {
+                    // TODO needs a more sophisticated error handling
+                    Utility.showMessageAlert(.SouqRequestFailed)
+                }
                 
                 return .Failure(error!)
             }
             
             guard let _ = data else {
-                // TODO needs a more sophisticated error handling
-                Utility.showMessageAlert(.SouqRequestFailed)
+                dispatch_async(dispatch_get_main_queue()) {
+                    // TODO needs a more sophisticated error handling
+                    Utility.showMessageAlert(.SouqRequestFailed)
+                }
                 
                 let failureReason = "Data could not be serialized. Input data was nil."
                 let error = Alamofire.Error.errorWithCode(.DataSerializationFailed, failureReason: failureReason)
@@ -104,7 +114,7 @@ extension Request {
             // whether the server considers it as valid. So we need to check meta
             // data of the response object, and show any error message to the user
             if !Request.validateResponseErrorsInBody(result.value) {
-                let failureReason = "Data could not be serialized. Input data was nil."
+                let failureReason = "Unkown error."
                 let error = Error.errorWithCode(.SouqRequestFailed, failureReason: failureReason)
                 return .Failure(error)
             }
@@ -116,12 +126,14 @@ extension Request {
                 JSONToMap = result.value
             }
             
-            if let parsedObject = Mapper<T>().mapArray(JSONToMap){
+            if let parsedObject = Mapper<T>().mapArray(JSONToMap) {
                 return .Success(parsedObject)
             }
             
-            // TODO needs a more sophisticated error handling
-            Utility.showMessageAlert(.SouqRequestFailed)
+            dispatch_async(dispatch_get_main_queue()) {
+                // TODO needs a more sophisticated error handling
+                Utility.showMessageAlert(.SouqRequestFailed)
+            }
             
             let failureReason = "ObjectMapper failed to serialize response."
             let error = Alamofire.Error.errorWithCode(.DataSerializationFailed, failureReason: failureReason)
@@ -163,7 +175,9 @@ extension Request {
         
         if let messageField = messageField where !success {
             if showAlertWithError {
-                Utility.showMessageAlert(messageField)
+                dispatch_async(dispatch_get_main_queue()) {
+                    Utility.showMessageAlert(messageField)
+                }
             }
             
             return false

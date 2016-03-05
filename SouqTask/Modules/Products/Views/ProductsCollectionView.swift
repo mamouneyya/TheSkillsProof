@@ -58,22 +58,52 @@ class ProductsCollectionView: UICollectionView {
     /// Router to use for API calls
     //private var APIRouter: Router!
     
+    // MARK: - Lifecycle
+    
+    deinit {
+        removeObservers()
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.registerNib(UINib(nibName: "FeedProductCell", bundle: nil), forCellWithReuseIdentifier: Identifiers.CollectionCells.Product)
+        self.registerNib(UINib(nibName: "FavoritedProductCell", bundle: nil), forCellWithReuseIdentifier: Identifiers.CollectionCells.Favorited)
+        
+        if let flowLayout = self.collectionViewLayout as? UICollectionViewFlowLayout {
+            let spacing: CGFloat = 10.0
+            
+            flowLayout.minimumLineSpacing = spacing
+            flowLayout.minimumInteritemSpacing = spacing
+            flowLayout.sectionInset = UIEdgeInsetsMake(spacing, spacing, spacing, spacing)
+        }
+        
+        self.dataSource = self
+        self.delegate   = self
+        
+        addObservers()
+    }
+    
     // MARK: - Public Methods
     
     func getProducts(configurationsSet configurationsSet: ProductsListConfigurationsSet, target: AnyObject? = nil) {
         self.configurationsSet = configurationsSet
         self.mainController = target as? UIViewController
         
-        Networker.request(Product.Request.getProductTypes(offset: 0)).responseJSON { (response) -> Void in
-            
+        Networker.request(Product.Request.getProductsOfSelectedTypes(offset: 1))
+            .responseArray("data.products") { (response: Response<[Product], NSError>) in
+                
             switch response.result {
             case .Success(let data):
                 print("Success")
                 print(data)
+                self.products = data
             case .Failure(let error):
                 print("Failure")
                 print(error)
             }
+                
+            self.reloadData()
         }
     }
     
@@ -87,9 +117,26 @@ class ProductsCollectionView: UICollectionView {
     private func updateConfigurationsSet(configurations: ProductsListConfigurationsSet) {
         switch configurations {
         case .All:
-            self.productCellIdentifier = Identifiers.TableCells.Product
+            self.productCellIdentifier = Identifiers.CollectionCells.Product
         case .Favorited:
-            self.productCellIdentifier = Identifiers.TableCells.Favorited
+            self.productCellIdentifier = Identifiers.CollectionCells.Favorited
+        }
+    }
+    
+    // MARK: - KVO
+    
+    private func addObservers() {
+        // observe frame changes, so we reload layout on device rotation
+        self.addObserver(self, forKeyPath: "frame", options: .New, context: nil)
+    }
+    
+    private func removeObservers() {
+        self.removeObserver(self, forKeyPath: "frame")
+    }
+    
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        if keyPath == "frame" {
+            self.collectionViewLayout.invalidateLayout()
         }
     }
     
@@ -104,7 +151,7 @@ extension ProductsCollectionView: UICollectionViewDataSource {
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return self.products.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -120,10 +167,25 @@ extension ProductsCollectionView: UICollectionViewDataSource {
 
 // MARK: - Collection View Delegate
 
-extension ProductsCollectionView: UICollectionViewDelegate {
+extension ProductsCollectionView: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let margin: CGFloat = 10.0
+        let columns: CGFloat = Utility.deviceOrientationIsPortrait() ? 2.0 : 3.0
+
+        var dimension: CGFloat = 0.0
+        
+        if self.configurationsSet == .All {
+            dimension = (self.bounds.size.width / columns) - (margin * (columns + 1) / columns)
+        } else {
+            dimension = self.bounds.size.width - 50.0
+        }
+        
+        return CGSizeMake(dimension, dimension)
     }
     
 }

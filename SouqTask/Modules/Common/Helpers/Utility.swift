@@ -101,4 +101,24 @@ class Utility {
         }
     }
     
+    // MARK: - Helpers
+    
+    /**
+        Simple wrapper to determine if device orientation is landscape.
+
+        - Returns: If device orientation is landscape.
+    */
+    class func deviceOrientationIsLandscape() -> Bool {
+        return UIDevice.currentDevice().orientation.isLandscape
+    }
+    
+    /**
+        Simple wrapper to determine if device orientation is portrait.
+
+        - Returns: If device orientation is portrait.
+    */
+    class func deviceOrientationIsPortrait() -> Bool {
+        return UIDevice.currentDevice().orientation.isPortrait
+    }
+    
 }

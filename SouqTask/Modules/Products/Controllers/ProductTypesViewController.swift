@@ -204,10 +204,10 @@ class ProductTypesViewController: BaseViewController {
         Save / Update user product types on disk. (for now they're saved in UserDefaults.)
     */
     private func saveSelectedProductTypes() {
-        func extractedProductTypeIds(productTypes: [ProductType]) -> [String] {
-            var productTypeIds = [String]()
+        func extractedProductTypeIds(productTypes: [ProductType]) -> [Int] {
+            var productTypeIds = [Int]()
             for productType in productTypes {
-                productTypeIds.append(productType.id)
+                productTypeIds.append(Int(productType.id)!)
             }
             
             return productTypeIds

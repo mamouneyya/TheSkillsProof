@@ -13,7 +13,9 @@ extension Product {
     enum Request: RequestConfigurations {
         
         case getProductTypes(offset: Int)
-        case getProducts
+        case getProducts(productTypeIds: [Int], offset: Int)
+        case getProductsOfSelectedTypes(offset: Int)
+        case getProduct
         
         /***************************
          **  (1)  Request Result  **
@@ -33,8 +35,26 @@ extension Product {
                     "format"   : RouterConfigurations.format
                 ]
                 
-            case .getProducts:
-                path = ""
+            case .getProducts(let productTypeIds, let offset):
+                path = "products"
+                parameters = [
+                    "product_types"   : productTypeIds,
+                    "page"            : offset,
+                    "show"            : RouterConfigurations.resultsPerPage,
+                    "show_attributes" : 0,
+                    "country"         : RouterConfigurations.country,
+                    "language"        : RouterConfigurations.language,
+                    "format"          : RouterConfigurations.format
+                ]
+                
+            case .getProductsOfSelectedTypes(let offset):
+                let UserProductTypeIds = Defaults[.UserProductTypeIds]!
+                let result = Product.Request.getProducts(productTypeIds: UserProductTypeIds, offset: offset).result
+                path       = result.path
+                parameters = result.parameters
+                
+            case .getProduct:
+                path = "products"
                 parameters = [
                     "product_id"      : "",
                     "show_offers"     : false,
@@ -44,11 +64,12 @@ extension Product {
                     "language"        : RouterConfigurations.language,
                     "format"          : RouterConfigurations.format
                 ]
-            }
             
+            }
+        
             return (path, parameters)
         }
-        
+    
         /***************************
          **  (2)  Request Method  **
          ***************************/
@@ -56,7 +77,9 @@ extension Product {
         var method: Alamofire.Method {
             switch self {
             case .getProductTypes,
-                 .getProducts:
+                 .getProducts,
+                 .getProductsOfSelectedTypes,
+                 .getProduct:
                 return .GET
                 
                 //case .:
@@ -77,7 +100,9 @@ extension Product {
         var encoding: ParameterEncoding {
             switch self {
             case .getProductTypes,
-                 .getProducts:
+                 .getProducts,
+                 .getProductsOfSelectedTypes,
+                 .getProduct:
                 return .URL
                 
                 //case .:
@@ -92,7 +117,9 @@ extension Product {
         var needsAuthentication: Bool {
             switch self {
             case .getProductTypes,
-                 .getProducts:
+                 .getProducts,
+                 .getProductsOfSelectedTypes,
+                 .getProduct:
                 return false
                 
                 //default:
