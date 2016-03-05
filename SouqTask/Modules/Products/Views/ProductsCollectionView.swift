@@ -66,22 +66,43 @@ class ProductsCollectionView: UICollectionView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+
+        registerCellNibs()
         
+        initializeLayout()
+        initializeCollectionView()
+        
+        addObservers()
+    }
+    
+    // MARK: - Initializing
+    
+    /**
+        Register reusable collection view's cells nib files, so they can be dequeued.
+    */
+    func registerCellNibs() {
         self.registerNib(UINib(nibName: "FeedProductCell", bundle: nil), forCellWithReuseIdentifier: Identifiers.CollectionCells.Product)
         self.registerNib(UINib(nibName: "FavoritedProductCell", bundle: nil), forCellWithReuseIdentifier: Identifiers.CollectionCells.Favorited)
-        
+    }
+    
+    /**
+        Configure collection view flow layout's properties (e.g. item spacing, etc.).
+    */
+    func initializeLayout() {
         if let flowLayout = self.collectionViewLayout as? UICollectionViewFlowLayout {
             let spacing: CGFloat = 10.0
-            
             flowLayout.minimumLineSpacing = spacing
             flowLayout.minimumInteritemSpacing = spacing
             flowLayout.sectionInset = UIEdgeInsetsMake(spacing, spacing, spacing, spacing)
         }
-        
+    }
+    
+    /**
+        Configure collection view, setting its data source, etc.
+    */
+    func initializeCollectionView() {
         self.dataSource = self
         self.delegate   = self
-        
-        addObservers()
     }
     
     // MARK: - Public Methods
