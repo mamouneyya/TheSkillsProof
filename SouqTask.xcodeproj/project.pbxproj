@@ -609,11 +609,10 @@
 		B9D3D8D81C8B5B2C008BCBB8 /* Prices */ = {
 			isa = PBXGroup;
 			children = (
-				B9D3D8D91C8B5B2C008BCBB8 /* Controllers */,
-				B9D3D8DB1C8B5B2C008BCBB8 /* Helpers */,
 				B9D3D8DC1C8B5B2C008BCBB8 /* Models */,
-				B9D3D8DE1C8B5B2C008BCBB8 /* Resources */,
 				B9D3D8DF1C8B5B2C008BCBB8 /* Views */,
+				B9D3D8D91C8B5B2C008BCBB8 /* Controllers */,
+				B9D3D8E21C8B5C2C008BCBB8 /* Others */,
 			);
 			path = Prices;
 			sourceTree = "<group>";
@@ -653,6 +652,15 @@
 			children = (
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		B9D3D8E21C8B5C2C008BCBB8 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				B9D3D8DB1C8B5B2C008BCBB8 /* Helpers */,
+				B9D3D8DE1C8B5B2C008BCBB8 /* Resources */,
+			);
+			name = Others;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

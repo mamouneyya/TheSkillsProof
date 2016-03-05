@@ -26,6 +26,12 @@ class Price: Root {
         super.init()
     }
     
+    init(value: Int, currency: String) {
+        super.init()
+        self.value = value
+        self.currency = currency
+    }
+    
     init(_ value: Int) {
         super.init()
         self.value = value

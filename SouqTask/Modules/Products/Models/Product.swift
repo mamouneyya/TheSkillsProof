@@ -17,7 +17,13 @@ class Product: Root {
     var categoryId = ""
     var title = ""
     
-    var price = Price()
+    private var priceValue: Int = 0
+    private var priceCurrency = ""
+    
+    var price: Price {
+        return Price(value: priceValue, currency: priceCurrency)
+    }
+    
     var prices = [Price]()
 
     var imageURL: NSURL?
@@ -37,10 +43,13 @@ class Product: Root {
     // MARK: - Mappable
     
     override func mapping(map: Map) {
-        id          <- map["id"]
-        categoryId  <- map["product_type_id"]
-        title       <- map["label"]
-        price       <- map["offer_price"]
-        imageURL    <- (map["images.L.0"], URLTransform())
+        id            <- map["id"]
+        categoryId    <- map["product_type_id"]
+        title         <- map["label"]
+
+        priceValue    <- map["offer_price"]
+        priceCurrency <- map["currency"]
+        
+        imageURL      <- (map["images.L.0"], URLTransform())
     }
 }
