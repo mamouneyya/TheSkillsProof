@@ -72,6 +72,11 @@ struct StoryboardScene {
             return StoryboardScene.Main.MainScene.viewController() as! UITabBarController
         }
         
+        case ProductScene = "Product"
+        static func instanciateProduct() -> ProductTableViewController {
+            return StoryboardScene.Main.ProductScene.viewController() as! ProductTableViewController
+        }
+        
         case ProductTypesScene = "ProductTypes"
         static func instanciateProductTypes() -> ProductTypesViewController {
             return StoryboardScene.Main.ProductTypesScene.viewController() as! ProductTypesViewController

@@ -39,7 +39,7 @@ class ProductTypeTableViewCell: BaseTableViewCell {
     
     // MARK: - Update Views
     
-    func updateViews(productType productType: ProductType) {
+    private func updateViews(productType productType: ProductType) {
         self.textLabel?.text = productType.title
     }
 

@@ -16,6 +16,10 @@ class Price: Root {
     var value = 0
     var currency = "$"
     
+    var friendlyTitle: String {
+        return "\(value) \(currency)"
+    }
+    
     // MARK: - Lifecycle
     
     override init() {

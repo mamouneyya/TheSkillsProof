@@ -41,7 +41,7 @@
                             <constraint firstItem="cxt-ko-aVy" firstAttribute="leading" secondItem="kGt-L4-gg1" secondAttribute="leading" constant="12" id="pGf-Cl-qk0"/>
                         </constraints>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fdA-eO-GUl">
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fdA-eO-GUl">
                         <rect key="frame" x="165" y="10" width="25" height="22"/>
                         <state key="normal" image="product-favorite"/>
                         <state key="selected" image="product-favorite-selected"/>

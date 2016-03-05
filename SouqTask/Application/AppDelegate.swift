@@ -79,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         UITableView.appearance().backgroundColor = UIColor(red: 0.9333, green: 0.9373, blue: 0.9373, alpha: 1.0)
         UITableView.appearance().separatorColor  = UIColor(red: 0.8353, green: 0.84, blue: 0.8399, alpha: 1.0)
-        UITableView.appearance().separatorInset  = UIEdgeInsetsMake(0, 15, 0, 15)
+        UITableView.appearance().separatorInset  = UIEdgeInsetsMake(0, 10, 0, 10)
         
         let tableCellSelectionView = UIView()
         tableCellSelectionView.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.0)

@@ -250,6 +250,14 @@ class ProductsCollectionView: UICollectionView {
         }
     }
     
+    // MARK: - Navigation
+    
+    private func goToProduct(product: Product) {
+        let productController = StoryboardScene.Main.instanciateProduct()
+            productController.product = product
+        self.mainController?.navigationController?.pushViewController(productController, animated: true)
+    }
+    
 }
 
 // MARK: - Collection View Data Source
@@ -280,7 +288,9 @@ extension ProductsCollectionView: UICollectionViewDataSource {
 extension ProductsCollectionView: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        
+        if indexPath.row < self.products.count {
+            goToProduct(self.products[indexPath.row])
+        }
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
