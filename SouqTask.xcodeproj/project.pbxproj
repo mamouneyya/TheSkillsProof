@@ -37,6 +37,7 @@
 		B96B31881C8718A6003CEAD3 /* FeedProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B96B316F1C8718A6003CEAD3 /* FeedProductCell.xib */; };
 		B96B31891C8718A6003CEAD3 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96B31701C8718A6003CEAD3 /* ProductCollectionViewCell.swift */; };
 		B96B31971C8730C4003CEAD3 /* ProductRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96B31961C8730C4003CEAD3 /* ProductRouter.swift */; };
+		B9D3D8A71C8B239E008BCBB8 /* Ext-String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D3D8A61C8B239E008BCBB8 /* Ext-String.swift */; };
 		B9DECC211C884701002C79EF /* Serializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DECC201C884701002C79EF /* Serializer.swift */; };
 		B9DECC231C88A111002C79EF /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DECC221C88A111002C79EF /* Error.swift */; };
 		B9DECC251C88FDE0002C79EF /* ProductTypesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DECC241C88FDE0002C79EF /* ProductTypesViewController.swift */; };
@@ -102,6 +103,7 @@
 		B96B316F1C8718A6003CEAD3 /* FeedProductCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedProductCell.xib; sourceTree = "<group>"; };
 		B96B31701C8718A6003CEAD3 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		B96B31961C8730C4003CEAD3 /* ProductRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductRouter.swift; sourceTree = "<group>"; };
+		B9D3D8A61C8B239E008BCBB8 /* Ext-String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ext-String.swift"; sourceTree = "<group>"; };
 		B9DECC201C884701002C79EF /* Serializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serializer.swift; sourceTree = "<group>"; };
 		B9DECC221C88A111002C79EF /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		B9DECC241C88FDE0002C79EF /* ProductTypesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTypesViewController.swift; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 			isa = PBXGroup;
 			children = (
 				B9DECC2D1C89EEDC002C79EF /* Ext-DefaultsKeys.swift */,
+				B9D3D8A61C8B239E008BCBB8 /* Ext-String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -780,6 +783,7 @@
 				B96B31731C8718A6003CEAD3 /* BaseCollectionViewController.swift in Sources */,
 				B96B31971C8730C4003CEAD3 /* ProductRouter.swift in Sources */,
 				B96B31751C8718A6003CEAD3 /* BaseViewController.swift in Sources */,
+				B9D3D8A71C8B239E008BCBB8 /* Ext-String.swift in Sources */,
 				B96B31771C8718A6003CEAD3 /* Constants.swift in Sources */,
 				B9DECC271C88FE04002C79EF /* BaseTableViewCell.swift in Sources */,
 				B96B31831C8718A6003CEAD3 /* ProductsCollectionViewController.swift in Sources */,

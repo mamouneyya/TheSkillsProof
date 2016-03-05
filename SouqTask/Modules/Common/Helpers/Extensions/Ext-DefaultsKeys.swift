@@ -10,5 +10,5 @@ import UIKit
 
 extension DefaultsKeys {
     static let InitialSetupDone   = DefaultsKey<Bool>("initialSetupDone")
-    static let UserProductTypeIds = DefaultsKey<[Int]?>("userProductTypeIds")
+    static let UserProductTypeIds = DefaultsKey<[String]?>("userProductTypeIds")
 }

@@ -13,7 +13,7 @@ extension Product {
     enum Request: RequestConfigurations {
         
         case getProductTypes(offset: Int)
-        case getProducts(productTypeIds: [Int], offset: Int)
+        case getProducts(productTypeIds: [String], offset: Int)
         case getProductsOfSelectedTypes(offset: Int)
         case getProduct
         
@@ -38,7 +38,7 @@ extension Product {
             case .getProducts(let productTypeIds, let offset):
                 path = "products"
                 parameters = [
-                    "product_types"   : productTypeIds,
+                    "product_types"   : productTypeIds.joinWithSeparator(","),
                     "page"            : offset,
                     "show"            : RouterConfigurations.resultsPerPage,
                     "show_attributes" : 0,
