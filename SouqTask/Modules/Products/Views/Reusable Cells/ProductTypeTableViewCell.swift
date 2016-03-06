@@ -39,6 +39,11 @@ class ProductTypeTableViewCell: BaseTableViewCell {
     
     // MARK: - Update Views
     
+    /**
+        Update cell's views from the model data object.
+        
+        - Parameter productType: Product data model to use.
+    */
     private func updateViews(productType productType: ProductType) {
         self.textLabel?.text = productType.title
     }

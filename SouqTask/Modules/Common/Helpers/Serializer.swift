@@ -84,6 +84,8 @@ extension Request {
         - parameter keyPath:            The key path where object mapping should be performed
         - parameter completionHandler:  A closure to be executed once the request has finished and the
                                         data has been mapped by ObjectMapper.
+        - parameter silent:             If we don't want the serializer to automatically show alerts
+                                        for error messages.
 
         - returns: The request.
      */
@@ -159,7 +161,9 @@ extension Request {
         - parameter keyPath:            The key path where object mapping should be performed
         - parameter completionHandler:  A closure to be executed once the request has finished and the
                                         data has been mapped by ObjectMapper.
-         
+        - parameter silent:             If we don't want the serializer to automatically show alerts
+                                        for error messages.
+     
         - returns: The request.
     */
     public func responseArray<T: Mappable>(keyPath: String? = "data", silent: Bool = false, completionHandler: Response<[T], NSError> -> Void) -> Self {
@@ -172,9 +176,9 @@ extension Request {
         Validates errors returned from the server in the response body. This should be called after the response passes request validation (status code is 200 ..< 300, etc.) and returns a valid response data from the server. The function can automatically show alert message with the error message returned to the user.
         
         - parameter responseData:       The returned server Result's value
-        - parameter showAlertWithError: Whether we want the function to automatically show alert with the
-                                        returned error message to the user
-        
+        - parameter silent:             If we don't want the serializer to automatically show alerts
+                                        for error messages.
+    
         - returns: Whether server considered the request as successful.
     */
     public static func validateResponseErrorsInBody(responseData: AnyObject!, silent: Bool = false) -> Bool {

@@ -39,11 +39,19 @@ struct OAuthSettings {
 struct Identifiers {
     struct TableCells {
         static let ProductType = "ProductType"
+        static let Price       = "Price"
     }
     struct CollectionCells {
         static let Product     = "ListProduct"
         static let Favorited   = "FavoritedProduct"
     }
+}
+
+// MARK: - Observers
+
+struct Observers {
+    static let ReloadFavoritedProducts = "ReloadFavoritedProductsNotification"
+    static let ReloadAllProducts       = "ReloadAllProductsNotification"
 }
 
 // MARK: - Messages
@@ -57,10 +65,9 @@ struct Messages {
 
 struct Colors {
     static let mainTint = UIColor(red:0.0/255.0, green:138.0/255.0, blue:255.0/255.0, alpha:1.0)
-    static let Text = UIColor(red:36.0/255.0, green:36.0/255.0, blue:36.0/255.0, alpha:1.0)
+    static let Text = UIColor(red:44.0/255.0, green:62.0/255.0, blue:80.0/255.0, alpha:1.0)
+    static let Destructive = UIColor(red:252.0/255.0, green:67.0/255.0, blue:73.0/255.0, alpha:1.0)
 }
-
-// MARK: - Fonts
 
 private let familyName = "SFUIText"
 
@@ -81,6 +88,13 @@ enum AppFont: String {
     private var fullFontName: String {
         return rawValue.isEmpty ? familyName : familyName + "-" + rawValue
     }
+}
+
+// MARK: - DBs
+
+struct DBNames {
+    static let Favorites = "favorites"
+    static let TrackedPrices = "tracked-prices"
 }
 
 // MARK: - Performance Logging Helpers

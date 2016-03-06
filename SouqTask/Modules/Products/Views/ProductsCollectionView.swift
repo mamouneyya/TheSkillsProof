@@ -23,7 +23,7 @@ enum ProductsListConfigurationsSet {
 
         - Returns: The equivalent cell configurations set type.
     */
-    func cellLayout() -> ProductCellConfigurationsSet {
+    func cellConfigurationsSet() -> ProductCellConfigurationsSet {
         switch self {
         case .All:
             return ProductCellConfigurationsSet.All
@@ -35,18 +35,20 @@ enum ProductsListConfigurationsSet {
 
 class ProductsCollectionView: UICollectionView {
 
+    // MARK: - Public Vars
+    
+    /// Configurations set of the data / appearance
+    var configurationsSet = ProductsListConfigurationsSet.All {
+        didSet {
+            updateConfigurationsSet(configurationsSet)
+        }
+    }
+    
     // MARK: - Private Vars
     
     /////////////
     // DATA STUFF
     /////////////
-    
-    /// Configurations set of the data / appearance
-    private var configurationsSet = ProductsListConfigurationsSet.All {
-        didSet {
-            updateConfigurationsSet(configurationsSet)
-        }
-    }
     
     /// Data models for the table view data source to use
     private var products = [Product]()
@@ -56,6 +58,9 @@ class ProductsCollectionView: UICollectionView {
     
     /// Main view controller, to use in case of navigation action
     private var mainController: UIViewController?
+    
+    /// Indicates that the collection view needs reload next time it appears (Most probably favorite statuses got changed)
+    private var reloadOnNextAppear = false
     
     ///////////////////
     // PAGINATION STUFF
@@ -74,7 +79,26 @@ class ProductsCollectionView: UICollectionView {
         super.awakeFromNib()
 
         initialize()
-        addObservers()
+    }
+
+    override func willMoveToWindow(newWindow: UIWindow?) {
+        super.willMoveToWindow(newWindow)
+        
+        // when flag raised to reload data, we look for the current configurations set,
+        // if All products, then simply calling `reloadData()` will refresh products 
+        // favorite statuses, as the new values will be read from our local DB. However,
+        // in case of Favorited products, we need to fetch the data itsef from our DB again,
+        // before calling reloadData().
+        if newWindow != nil && self.reloadOnNextAppear {
+            if self.configurationsSet == .All {
+                self.reload()
+            } else if self.configurationsSet == .Favorited {
+                self.getFavoritedProducts()
+            }
+            
+            // reset the flag
+            self.reloadOnNextAppear = false
+        }
     }
     
     // MARK: - Initializing
@@ -85,7 +109,6 @@ class ProductsCollectionView: UICollectionView {
     func initialize() {
         registerCellNibs()
         
-        initializeLayout()
         initializeCollectionView()
     }
     
@@ -102,7 +125,7 @@ class ProductsCollectionView: UICollectionView {
     */
     func initializeLayout() {
         if let flowLayout = self.collectionViewLayout as? UICollectionViewFlowLayout {
-            let spacing: CGFloat = 10.0
+            let spacing: CGFloat = self.configurationsSet == .Favorited ? 20.0 : 10.0
             flowLayout.minimumLineSpacing = spacing
             flowLayout.minimumInteritemSpacing = spacing
             flowLayout.sectionInset = UIEdgeInsetsMake(spacing, spacing, spacing, spacing)
@@ -116,7 +139,9 @@ class ProductsCollectionView: UICollectionView {
         self.dataSource = self
         self.delegate   = self
         
-        addInfiniteScroll()
+        self.backgroundColor = UIColor.whiteColor()
+        self.bounces = true
+        self.alwaysBounceVertical = true
     }
     
     /**
@@ -144,7 +169,54 @@ class ProductsCollectionView: UICollectionView {
         self.configurationsSet = configurationsSet
         self.mainController    = target as? UIViewController
         
-        getProducts()
+        if configurationsSet == .Favorited {
+            getFavoritedProducts()
+        } else if configurationsSet == .All {
+            getProducts()
+        }
+    }
+    
+    /**
+        This method is designed to be called from Favorited product cell, to delete a specific product from our favorites DB. After making sure the data got updated successfully, the method removes product's cell from the collection view with a nice animation.
+        
+        - Parameter cell: Favorited product cell to delete its product from favorites.
+     
+        - NOTE: This method should never be called from any cell other than Favorited product cell.
+    */
+    func deleteFavoritedProductInCell(cell: ProductCollectionViewCell) {
+        guard self.configurationsSet == .Favorited else {
+            print("Warning: This method should NOT be used with collection view other than favorites.")
+            return
+        }
+        
+        // get cell's index path
+        if let indexPath = self.indexPathForCell(cell) {
+            if indexPath.row < self.products.count {
+                let product = self.products[indexPath.row]
+                
+                FavoritesManager.asyncRemoveProductFromFavorite(product) { (_, error) -> () in
+                    guard error == nil else { return }
+                    
+                    self.products.removeAtIndex(indexPath.row)
+                    
+                    // send notifications to All products collection view, so it also updates the product's
+                    // favorite status accordingly. This guarantees consistency between both collection views.
+                    NSNotificationCenter.defaultCenter().postNotificationName(Observers.ReloadAllProducts, object: nil)
+                    
+                    // update view in main thread
+                    dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                        self.deleteItemsAtIndexPaths([indexPath])
+                    }
+                }
+            }
+        }
+    }
+    
+    /**
+        This method is designed to be called from All product cell when update happens to one of the product favorite status, to update Favorites collection view cells accordingly.
+    */
+    func refreshProductsFavoriteStatus() {
+        NSNotificationCenter.defaultCenter().postNotificationName(Observers.ReloadFavoritedProducts, object: nil)
     }
     
     // MARK: - Private Methods
@@ -201,6 +273,24 @@ class ProductsCollectionView: UICollectionView {
     }
     
     /**
+        Get all favorited products stored locally in our DB, the method automatically fires reloadTableView() when fetches results.
+    */
+    private func getFavoritedProducts() {
+        Utility.showLoadingHUD(self)
+        
+        FavoritesManager.asyncGetAllProductsInFavorite { (objects, error) -> () in
+            if let objects = objects {
+                self.products = objects
+                
+                dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                    Utility.hideLoadingHUD(self)
+                    self.reload()
+                }
+            }
+        }
+    }
+    
+    /**
         Fetch more results from the server until they're all fetched.
     */
     private func getMoreProducts() {
@@ -217,9 +307,15 @@ class ProductsCollectionView: UICollectionView {
         switch configurations {
         case .All:
             self.productCellIdentifier = Identifiers.CollectionCells.Product
+            addInfiniteScroll()
+            
         case .Favorited:
             self.productCellIdentifier = Identifiers.CollectionCells.Favorited
         }
+        
+        // initialize layout at this stage, as it depends on the selected configurations set
+        addObservers()
+        initializeLayout()
     }
     
     // MARK: - Helpers
@@ -232,15 +328,36 @@ class ProductsCollectionView: UICollectionView {
     private func reload() {
         self.reloadData()
     }
+
+    // MARK: - Observers
+    
+    /**
+        Add our observers (both KVO & notifications based).
+    
+        - NOTE: This method should be called in a place that is guaranteed to get the correct value of
+                `configurationsSet`, as some observers depend on it to decide what events to register.
+    */
+    private func addObservers() {
+        addKVOObservers()
+        addNotificationObservers()
+    }
+    
+    /**
+        Remove all class observers.
+    */
+    private func removeObservers() {
+        removeKVOObservers()
+        removeNotificationObservers()
+    }
     
     // MARK: - KVO
     
-    private func addObservers() {
+    private func addKVOObservers() {
         // observe frame changes, so we reload layout on device rotation
         self.addObserver(self, forKeyPath: "frame", options: .New, context: nil)
     }
     
-    private func removeObservers() {
+    private func removeKVOObservers() {
         self.removeObserver(self, forKeyPath: "frame")
     }
     
@@ -250,11 +367,39 @@ class ProductsCollectionView: UICollectionView {
         }
     }
     
+    // MARK: - Notifications
+    
+    private func addNotificationObservers() {
+        if self.configurationsSet == .All {
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "onReloadNotification:", name: Observers.ReloadAllProducts, object: nil)
+
+        } else if self.configurationsSet == .Favorited {
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "onReloadNotification:", name: Observers.ReloadFavoritedProducts, object: nil)
+        }
+    }
+    
+    private func removeNotificationObservers() {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    @objc private func onReloadNotification(notification: NSNotification) {
+        // raise a flag to reload on next appear
+        self.reloadOnNextAppear = true
+    }
+    
     // MARK: - Navigation
     
-    private func goToProduct(product: Product) {
+    /**
+        Navigate to product detailed controller.
+        
+        - Parameter product:    Product to go to its detailed screen.
+        - Parameter cell:       Cell object so the detailed can use cell's methods to update favorite statuses.
+    */
+    private func goToProduct(product: Product, cell: ProductCollectionViewCell?) {
         let productController = StoryboardScene.Main.instanciateProduct()
             productController.product = product
+            productController.sourceCell = cell
+        
         self.mainController?.navigationController?.pushViewController(productController, animated: true)
     }
     
@@ -276,6 +421,7 @@ extension ProductsCollectionView: UICollectionViewDataSource {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(productCellIdentifier, forIndexPath: indexPath) as! ProductCollectionViewCell
         
+        cell.mainCollectionView = self
         cell.product = self.products[indexPath.row]
         
         return cell
@@ -289,7 +435,8 @@ extension ProductsCollectionView: UICollectionViewDelegate, UICollectionViewDele
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row < self.products.count {
-            goToProduct(self.products[indexPath.row])
+            let cell = collectionView.cellForItemAtIndexPath(indexPath) as? ProductCollectionViewCell
+            goToProduct(self.products[indexPath.row], cell: cell)
         }
     }
     
@@ -297,15 +444,17 @@ extension ProductsCollectionView: UICollectionViewDelegate, UICollectionViewDele
         let margin: CGFloat = 10.0
         let columns: CGFloat = Utility.deviceOrientationIsPortrait() ? 2.0 : 3.0
 
-        var dimension: CGFloat = 0.0
+        var width: CGFloat = 0.0
+        var height: CGFloat?
         
         if self.configurationsSet == .All {
-            dimension = (self.bounds.size.width / columns) - (margin * (columns + 1) / columns)
+            width = (self.bounds.size.width / columns) - (margin * (columns + 1) / columns)
         } else {
-            dimension = self.bounds.size.width - 50.0
+            width = self.bounds.size.width - 40.0
+            height = 135.0
         }
         
-        return CGSizeMake(dimension, dimension)
+        return CGSizeMake(width, height ?? width)
     }
     
 }

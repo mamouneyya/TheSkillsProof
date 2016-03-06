@@ -9,30 +9,58 @@
 import UIKit
 import ObjectMapper
 
-class Product: Root {
+class Product: Root, Storable {
 
-    // MARK: - Vars
+    // MARK: - Public Vars
     
+    /// Product's ID.
     var id = ""
+    /// ID of the product type it belongs.
     var categoryId = ""
+    /// Product's title.
     var title = ""
-    
-    private var priceValue: Int = 0
-    private var priceCurrency = ""
-    
+    /// All previously tracked prices for the product.
+    var prices = [Price]()
+
+    /// Product's price.
     var price: Price {
         return Price(value: priceValue, currency: priceCurrency)
     }
-    
-    var prices = [Price]()
 
-    var imageURL: NSURL?
+    /// Product's image URL.
+    var imageURL: NSURL? {
+        if let imageLink = imageLink {
+            return NSURL(string: imageLink)
+        }
+        
+        return nil
+    }
     
-    var favorited = false
+    /// Whether the product is favorited by user.
+    var favorited: Bool {
+        get {
+            return FavoritesManager.isProductFavorited(self.id)
+        }
+        set {
+            if newValue {
+                FavoritesManager.addProductToFavorite(self)
+            } else {
+                FavoritesManager.removeProductFromFavorite(self)
+            }
+        }
+    }
 
+    // MARK: - Private Vars
+    
+    // NOTE I had to make them public. Otherwise SwiftyDB crashes while trying to grab / set them
+    
+    var priceValue: Int = 0
+    var priceCurrency = ""
+    var imageLink: String?
+    
     // MARK: - Lifecycle
     
-    override init() {
+    override required init() {
         super.init()
     }
     
@@ -50,6 +78,15 @@ class Product: Root {
         priceValue    <- map["offer_price"]
         priceCurrency <- map["currency"]
         
-        imageURL      <- (map["images.L.0"], URLTransform())
+        imageLink     <- map["images.L.0"]
+    }
+}
+
+// MARK: - Storable
+
+extension Product: PrimaryKeys {
+    /// Class object's primary key for SwiftyDB
+    class func primaryKeys() -> Set<String> {
+        return ["id"]
     }
 }

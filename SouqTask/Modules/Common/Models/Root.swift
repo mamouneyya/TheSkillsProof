@@ -9,9 +9,9 @@
 import UIKit
 import ObjectMapper
 
-class Root: Mappable {
+class Root: NSObject, Mappable {
     
-    init() {}
+    override init() {}
     required init?(_ map: Map) {}
     func mapping(map: Map) {}
     

@@ -195,13 +195,6 @@ class ProductTypesViewController: BaseViewController {
         case .Deselect:
             self.selectedProductTypesMap.removeValueForKey(productType.id)
         }
-        
-        //#if DEBUG
-            //print("====\n\nMAP:\n")
-            //print(selectedProductTypesMap)
-            //print("====\n\nARRAY:\n")
-            //print(selectedProductTypes)
-        //#endif
     }
 
     /**
@@ -234,6 +227,9 @@ class ProductTypesViewController: BaseViewController {
 
     }
     
+    /**
+        Navigate to home view controller.
+    */
     func goToHome() {
         AppDelegate.sharedAppDelegate()?.changeRootToHome(animated: true, fancy: true)
     }

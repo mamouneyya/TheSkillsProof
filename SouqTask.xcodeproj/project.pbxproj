@@ -18,7 +18,6 @@
 		B96B31751C8718A6003CEAD3 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96B31471C8718A6003CEAD3 /* BaseViewController.swift */; };
 		B96B31761C8718A6003CEAD3 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96B31491C8718A6003CEAD3 /* Assets.swift */; };
 		B96B31771C8718A6003CEAD3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96B314A1C8718A6003CEAD3 /* Constants.swift */; };
-		B96B31781C8718A6003CEAD3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96B314C1C8718A6003CEAD3 /* Extensions.swift */; };
 		B96B31791C8718A6003CEAD3 /* Networker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96B314D1C8718A6003CEAD3 /* Networker.swift */; };
 		B96B317A1C8718A6003CEAD3 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96B314E1C8718A6003CEAD3 /* Router.swift */; };
 		B96B317B1C8718A6003CEAD3 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96B314F1C8718A6003CEAD3 /* Utility.swift */; };
@@ -37,11 +36,11 @@
 		B96B31891C8718A6003CEAD3 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96B31701C8718A6003CEAD3 /* ProductCollectionViewCell.swift */; };
 		B96B31971C8730C4003CEAD3 /* ProductRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96B31961C8730C4003CEAD3 /* ProductRouter.swift */; };
 		B9D04B5D1C8B76B200236138 /* PricesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D04B5C1C8B76B200236138 /* PricesManager.swift */; };
+		B9D04B611C8B77A800236138 /* ProductAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9D04B601C8B77A800236138 /* ProductAssets.xcassets */; };
 		B9D3D8AD1C8B2830008BCBB8 /* SF-UI-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B9D3D8A91C8B2830008BCBB8 /* SF-UI-Text-Bold.otf */; };
 		B9D3D8AE1C8B2830008BCBB8 /* SF-UI-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = B9D3D8AA1C8B2830008BCBB8 /* SF-UI-Text-Light.otf */; };
 		B9D3D8AF1C8B2830008BCBB8 /* SF-UI-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B9D3D8AB1C8B2830008BCBB8 /* SF-UI-Text-Regular.otf */; };
 		B9D3D8B01C8B2830008BCBB8 /* SF-UI-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B9D3D8AC1C8B2830008BCBB8 /* SF-UI-Text-Semibold.otf */; };
-		B9D3D8B21C8B2A13008BCBB8 /* Images in Resources */ = {isa = PBXBuildFile; fileRef = B9D3D8B11C8B2A13008BCBB8 /* Images */; };
 		B9D3D8B51C8B46FB008BCBB8 /* ProductTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D3D8B41C8B46FB008BCBB8 /* ProductTableViewController.swift */; };
 		B9D3D8E01C8B5B2C008BCBB8 /* PricesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D3D8DA1C8B5B2C008BCBB8 /* PricesTableViewController.swift */; };
 		B9D3D8E11C8B5B2C008BCBB8 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D3D8DD1C8B5B2C008BCBB8 /* Price.swift */; };
@@ -93,7 +92,6 @@
 		B96B31471C8718A6003CEAD3 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		B96B31491C8718A6003CEAD3 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		B96B314A1C8718A6003CEAD3 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		B96B314C1C8718A6003CEAD3 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B96B314D1C8718A6003CEAD3 /* Networker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networker.swift; sourceTree = "<group>"; };
 		B96B314E1C8718A6003CEAD3 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		B96B314F1C8718A6003CEAD3 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
@@ -112,11 +110,11 @@
 		B96B31701C8718A6003CEAD3 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		B96B31961C8730C4003CEAD3 /* ProductRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductRouter.swift; sourceTree = "<group>"; };
 		B9D04B5C1C8B76B200236138 /* PricesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PricesManager.swift; sourceTree = "<group>"; };
+		B9D04B601C8B77A800236138 /* ProductAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ProductAssets.xcassets; sourceTree = "<group>"; };
 		B9D3D8A91C8B2830008BCBB8 /* SF-UI-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Bold.otf"; sourceTree = "<group>"; };
 		B9D3D8AA1C8B2830008BCBB8 /* SF-UI-Text-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Light.otf"; sourceTree = "<group>"; };
 		B9D3D8AB1C8B2830008BCBB8 /* SF-UI-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Regular.otf"; sourceTree = "<group>"; };
 		B9D3D8AC1C8B2830008BCBB8 /* SF-UI-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Semibold.otf"; sourceTree = "<group>"; };
-		B9D3D8B11C8B2A13008BCBB8 /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
 		B9D3D8B41C8B46FB008BCBB8 /* ProductTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTableViewController.swift; sourceTree = "<group>"; };
 		B9D3D8DA1C8B5B2C008BCBB8 /* PricesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PricesTableViewController.swift; sourceTree = "<group>"; };
 		B9D3D8DD1C8B5B2C008BCBB8 /* Price.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
@@ -328,7 +326,6 @@
 				B9DECC201C884701002C79EF /* Serializer.swift */,
 				B9DECC221C88A111002C79EF /* Error.swift */,
 				B96B314F1C8718A6003CEAD3 /* Utility.swift */,
-				B96B314C1C8718A6003CEAD3 /* Extensions.swift */,
 				B96B314B1C8718A6003CEAD3 /* Extensions */,
 			);
 			path = Helpers;
@@ -605,9 +602,9 @@
 		B9D3D8B31C8B2A19008BCBB8 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				B9D3D8B11C8B2A13008BCBB8 /* Images */,
+				B9D04B601C8B77A800236138 /* ProductAssets.xcassets */,
 			);
-			name = Images;
+			path = Images;
 			sourceTree = "<group>";
 		};
 		B9D3D8D81C8B5B2C008BCBB8 /* Prices */ = {
@@ -780,7 +777,7 @@
 				B9D3D8AD1C8B2830008BCBB8 /* SF-UI-Text-Bold.otf in Resources */,
 				B9D3D8AF1C8B2830008BCBB8 /* SF-UI-Text-Regular.otf in Resources */,
 				B96B31871C8718A6003CEAD3 /* FavoritedProductCell.xib in Resources */,
-				B9D3D8B21C8B2A13008BCBB8 /* Images in Resources */,
+				B9D04B611C8B77A800236138 /* ProductAssets.xcassets in Resources */,
 				B96B317F1C8718A6003CEAD3 /* Main.storyboard in Resources */,
 				B96B31801C8718A6003CEAD3 /* Assets.xcassets in Resources */,
 				B9D3D8B01C8B2830008BCBB8 /* SF-UI-Text-Semibold.otf in Resources */,
@@ -862,7 +859,6 @@
 				B9DECC2B1C88FE90002C79EF /* BaseCollectionViewCell.swift in Sources */,
 				B9DECC211C884701002C79EF /* Serializer.swift in Sources */,
 				B9125DFE1C7A5D360058E1D7 /* AppDelegate.swift in Sources */,
-				B96B31781C8718A6003CEAD3 /* Extensions.swift in Sources */,
 				B9DECC291C88FE2A002C79EF /* ProductTypeTableViewCell.swift in Sources */,
 				B96B31761C8718A6003CEAD3 /* Assets.swift in Sources */,
 				B96B31811C8718A6003CEAD3 /* FavoritesCollectionViewController.swift in Sources */,

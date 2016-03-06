@@ -13,9 +13,12 @@ class ProductType: Root {
     
     // MARK: - Vars
     
+    /// Product type Id.
     var id = ""
+    /// Product type title.
     var title = ""
     
+    /// Product type link.
     var url: NSURL?
     
     // MARK: - Lifecycle
