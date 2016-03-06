@@ -13,6 +13,7 @@
 		B9013E741C8BD32800EABCB0 /* ProductType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9013E6D1C8BD32800EABCB0 /* ProductType.swift */; };
 		B9013E751C8BD32800EABCB0 /* ProductTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9013E711C8BD32800EABCB0 /* ProductTypeTableViewCell.swift */; };
 		B9013E781C8BEB2600EABCB0 /* Ext-NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9013E771C8BEB2600EABCB0 /* Ext-NSDate.swift */; };
+		B9013E7A1C8BFA2900EABCB0 /* BackgroundFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9013E791C8BFA2900EABCB0 /* BackgroundFetcher.swift */; };
 		B9125DD71C7A593D0058E1D7 /* SouqTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9125DD61C7A593D0058E1D7 /* SouqTaskTests.swift */; };
 		B9125DE21C7A593D0058E1D7 /* SouqTaskUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9125DE11C7A593D0058E1D7 /* SouqTaskUITests.swift */; };
 		B9125DFE1C7A5D360058E1D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9125DF01C7A5D360058E1D7 /* AppDelegate.swift */; };
@@ -83,6 +84,7 @@
 		B9013E6D1C8BD32800EABCB0 /* ProductType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductType.swift; sourceTree = "<group>"; };
 		B9013E711C8BD32800EABCB0 /* ProductTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTypeTableViewCell.swift; sourceTree = "<group>"; };
 		B9013E771C8BEB2600EABCB0 /* Ext-NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ext-NSDate.swift"; sourceTree = "<group>"; };
+		B9013E791C8BFA2900EABCB0 /* BackgroundFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundFetcher.swift; sourceTree = "<group>"; };
 		B9125DBC1C7A593D0058E1D7 /* SouqTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SouqTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9125DD21C7A593D0058E1D7 /* SouqTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SouqTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9125DD61C7A593D0058E1D7 /* SouqTaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SouqTaskTests.swift; sourceTree = "<group>"; };
@@ -397,6 +399,7 @@
 				B96B314E1C8718A6003CEAD3 /* Router.swift */,
 				B9DECC201C884701002C79EF /* Serializer.swift */,
 				B9DECC221C88A111002C79EF /* Error.swift */,
+				B9013E791C8BFA2900EABCB0 /* BackgroundFetcher.swift */,
 				B96B314F1C8718A6003CEAD3 /* Utility.swift */,
 				B96B314B1C8718A6003CEAD3 /* Extensions */,
 			);
@@ -807,6 +810,11 @@
 				TargetAttributes = {
 					B9125DBB1C7A593D0058E1D7 = {
 						CreatedOnToolsVersion = 7.2.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					B9125DD11C7A593D0058E1D7 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -928,6 +936,7 @@
 				B96B317A1C8718A6003CEAD3 /* Router.swift in Sources */,
 				B9DECC2B1C88FE90002C79EF /* BaseCollectionViewCell.swift in Sources */,
 				B9DECC211C884701002C79EF /* Serializer.swift in Sources */,
+				B9013E7A1C8BFA2900EABCB0 /* BackgroundFetcher.swift in Sources */,
 				B9125DFE1C7A5D360058E1D7 /* AppDelegate.swift in Sources */,
 				B9013E731C8BD32800EABCB0 /* ProductTypeRouter.swift in Sources */,
 				B96B31761C8718A6003CEAD3 /* Assets.swift in Sources */,

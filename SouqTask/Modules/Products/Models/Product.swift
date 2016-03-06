@@ -24,7 +24,7 @@ class Product: Root, Storable {
 
     /// Product's price.
     var price: Price {
-        return Price(value: priceValue, currency: priceCurrency)
+        return Price(value: priceValue, currency: priceCurrency, productId: id)
     }
 
     /// Product's image URL.
@@ -79,6 +79,46 @@ class Product: Root, Storable {
         priceCurrency <- map["currency"]
         
         imageLink     <- map["images.L.0"]
+    }
+    
+    // MARK: - Helpers
+    
+    /**
+        Updates DB prices log for this product, if needed (if price changes from last time it was logged).
+    */
+    func updateTrackedPrices(completion: ((updated: Bool) -> ())? = nil ) {
+        var needsUpdate = false
+        
+        if let lastTrackedPrice = PricesManager.lastTrackedPriceForProduct(self.id) {
+            needsUpdate = lastTrackedPrice != self.priceValue
+        } else {
+            needsUpdate = true
+        }
+        
+        if needsUpdate {
+            PricesManager.asyncAddPriceForProduct(self.price) { (object, error) -> () in
+                completion?(updated: error == nil)
+            }
+
+        } else {
+            completion?(updated: false)
+        }
+    }
+    
+    /**
+        Updates DB prices log for this product if needed, with an explicit check if this product is actually favorited. This method can be automatically called whenever product gets fetched, to always keep DB update-to-date.
+    */
+    func updateTrackedPricesIfFavorited() {
+        if self.favorited {
+            updateTrackedPrices()
+        }
+    }
+    
+    /**
+        Remove all tracked prices for this product from our DB.
+     */
+    func removeTrackedPrices() {
+        PricesManager.asyncRemoveAllPricesForProduct(self.id)
     }
 }
 

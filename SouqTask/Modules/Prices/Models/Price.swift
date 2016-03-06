@@ -23,7 +23,7 @@ class Price: Root, Storable {
         return "\(value) \(currency)"
     }
     
-    var productId: String?
+    var productId = ""
     var trackedDate = NSDate()
     
     // MARK: - Lifecycle
@@ -32,15 +32,22 @@ class Price: Root, Storable {
         super.init()
     }
     
+    init(_ value: Int) {
+        super.init()
+        self.value = value
+    }
+    
     init(value: Int, currency: String) {
         super.init()
         self.value = value
         self.currency = currency
     }
     
-    init(_ value: Int) {
+    init(value: Int, currency: String, productId: String) {
         super.init()
         self.value = value
+        self.currency = currency
+        self.productId = productId
     }
 
     required init?(_ map: Map) {

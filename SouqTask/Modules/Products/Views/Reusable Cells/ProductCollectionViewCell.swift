@@ -62,6 +62,8 @@ class ProductCollectionViewCell: BaseCollectionViewCell {
             self.favoriteButton.selected = self.product.favorited
         }
         
+        // TODO use a nice placeholder
+        self.productImageView.image = nil
         if let productImageURL = product.imageURL {
             self.productImageView.af_setImageWithURL(productImageURL)
         }

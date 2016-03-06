@@ -5,6 +5,12 @@
 //  Created by Ma'moun Diraneyya on 2/23/16.
 //  Copyright © 2016 Mamouneyya. All rights reserved.
 //
+//  NOTE:   You could argue that combining get data methods inside the view
+//          would break MVC pattern. I actually agree somehow, but couldn't
+//          resist the reusability! Maybe the perfect solution is to separate
+//          the data source / delegate in external object that would work with
+//          any collection view..
+//
 
 import UIKit
 
@@ -263,6 +269,13 @@ class ProductsCollectionView: UICollectionView {
                             }, completion: { (finished) -> Void in
                                 self.finishInfiniteScroll()
                         })
+                    }
+                    
+                    // update products tracked prices in background
+                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0)) { () -> Void in
+                        for product in self.products {
+                            product.updateTrackedPricesIfFavorited()
+                        }
                     }
 
                 case .Failure(let error):

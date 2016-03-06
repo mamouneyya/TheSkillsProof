@@ -111,7 +111,13 @@ class FavoritesManager {
         - Returns: true if the inserting succeeded.
     */
     class func addProductToFavorite(product: Product) -> Bool {
-        return sharedInstance.database.addObject(product, update: true).isSuccess
+        if sharedInstance.database.addObject(product, update: true).isSuccess {
+            // start tracking product prices
+            product.updateTrackedPrices()
+            return true
+        }
+        
+        return false
     }
     
     /**
@@ -129,6 +135,9 @@ class FavoritesManager {
                 #endif
                 action?(object: product, error: error)
             } else {
+                // start tracking product prices
+                product.updateTrackedPrices()
+                
                 action?(object: product, error: nil)
             }
         }
@@ -142,7 +151,12 @@ class FavoritesManager {
         - Returns: true if the deletion succeeded.
     */
     class func removeProductFromFavorite(product: Product) -> Bool {
-        return sharedInstance.database.deleteObjectsForType(Product.self, matchingFilter: ["id": product.id]).isSuccess
+        if sharedInstance.database.deleteObjectsForType(Product.self, matchingFilter: ["id": product.id]).isSuccess {
+            // remove previously stored prices
+            product.removeTrackedPrices()
+        }
+        
+        return false
     }
     
     /**
@@ -160,6 +174,9 @@ class FavoritesManager {
                 #endif
                 action?(object: product, error: error)
             } else {
+                // remove previously stored prices
+                product.removeTrackedPrices()
+                
                 action?(object: product, error: nil)
             }
         }

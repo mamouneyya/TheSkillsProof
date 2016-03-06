@@ -17,7 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
+        registerForLocalNotifications()
         setupAppearance()
+        setupBackgroundFetching()
         
         if Defaults[.InitialSetupDone] == false {
             changeRootToInitialSetup()
@@ -104,6 +106,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
         applicationHandleOpenURL(url)
         return true
+    }
+    
+    // MARK: - Background Fetch
+    
+    func setupBackgroundFetching() {
+        let sharedApplication = UIApplication.sharedApplication()
+            sharedApplication.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
+    }
+    
+    func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+
+        BackgroundFetcher.sharedInstance.updateTrackedPricesForFavoritedProducts { (backgroundFetchResult) -> () in
+            if backgroundFetchResult == .NewData {
+                // notify the user in case of updated prices
+                self.sendLocalNotificationForUpdatedPrices()
+            }
+            completionHandler(backgroundFetchResult)
+        }
+    }
+    
+    // MARK: - Local Notifications
+    
+    /**
+        Registers the app in local notifications service.
+    */
+    func registerForLocalNotifications() {
+        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Sound], categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+    }
+    
+    /**
+        Notifies the user about some prices updates of some of his / her favorite products.
+    */
+    func sendLocalNotificationForUpdatedPrices() {
+        let localNotification:UILocalNotification = UILocalNotification()
+            localNotification.alertBody = "Some of your favorite products at Souq have new prices. Take a look!"
+            localNotification.fireDate = NSDate(timeIntervalSinceNow: 1)
+        
+        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
     }
     
     // MARK: - Navigation

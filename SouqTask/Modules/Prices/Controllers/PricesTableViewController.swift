@@ -23,20 +23,6 @@ class PricesTableViewController: BaseTableViewController {
         
         initialize()
         
-        //let p = Price(0)
-        //p.currency = "$"
-        //p.productId = self.productId
-        //p.trackedDate = NSDate()
-        //PricesManager.asyncAddPriceForProduct(p) { (object, error) -> () in
-            //print(object)
-            //print(error)
-        //}
-        
-        //PricesManager.asyncRemoveAllPricesForProduct(self.productId!) { (object, error) -> () in
-            //print(object)
-            //print(error)
-        //}
-        
         if let productId = productId {
             getPrices(productId)
         }
@@ -96,6 +82,12 @@ extension PricesTableViewController {
         
         // configure cell
         cell.price = self.prices[indexPath.row]
+        
+        // To remove any confusion, label the first logged price as `Initial record`
+        // as we have no idea when exactly it was changed to that value..
+        if indexPath.row == self.prices.count - 1 {
+            cell.dateLabel.text = "Initial record"
+        }
         
         return cell
     }
