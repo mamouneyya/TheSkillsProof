@@ -139,8 +139,8 @@ class ProductTableViewController: BaseTableViewController {
     */
     private func goToAllPreviousPrices() {
         let pricesController = StoryboardScene.Main.instanciateProductPrices()
-            pricesController.product = self.product
-        
+            pricesController.productId = self.product.id
+
         self.navigationController?.pushViewController(pricesController, animated: true)
     }
 

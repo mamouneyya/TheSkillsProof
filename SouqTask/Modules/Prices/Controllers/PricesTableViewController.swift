@@ -12,33 +12,33 @@ class PricesTableViewController: BaseTableViewController {
 
     // MARK: - Vars
     
-    var product = Product() {
-        didSet {
-            updateViews(product: product)
-        }
-    }
+    var productId: String?
+    
+    var prices = [Price]()
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //TICK()
+        initialize()
         
-        for i in 0 ..< 55 {
-            Networker.request(Product.Request.getProduct(productId: "7278383"))
-                .responseObject(silent: true) { (response: Response<Product, NSError>) -> Void in
-                    switch response.result {
-                    case .Success(let data):
-                        print(data.price)
-                    case .Failure(_):
-                        print("Failure")
-                    }
-                    
-                    if i == 24 {
-                        TOCK()
-                    }
-            }
+        //let p = Price(0)
+        //p.currency = "$"
+        //p.productId = self.productId
+        //p.trackedDate = NSDate()
+        //PricesManager.asyncAddPriceForProduct(p) { (object, error) -> () in
+            //print(object)
+            //print(error)
+        //}
+        
+        //PricesManager.asyncRemoveAllPricesForProduct(self.productId!) { (object, error) -> () in
+            //print(object)
+            //print(error)
+        //}
+        
+        if let productId = productId {
+            getPrices(productId)
         }
     }
 
@@ -46,10 +46,35 @@ class PricesTableViewController: BaseTableViewController {
         super.didReceiveMemoryWarning()
     }
     
-    // MARK: - Update Views
+    // MARK: - Initialize
     
-    func updateViews(product product: Product) {
-
+    /**
+        Configure table view before initially display.
+    */
+    private func initialize() {
+        self.tableView.rowHeight = 55.0
+        self.tableView.allowsSelection = false
+        self.tableView.tableFooterView = UIView(frame: CGRectZero)
+    }
+    
+    // MARK: - Get Data
+    
+    /**
+        Asynchronously get all previously tracked prices for a product from our DB.
+        
+        - Parameter productId: The product Id to fetch its stored prices.
+    */
+    func getPrices(productId: String) {
+        PricesManager.asyncGetAllPricesForProduct(productId) { (objects, error) -> () in
+            guard error == nil else { return }
+            
+            print(objects)
+            print(error)
+            
+            if let objects = objects {
+                self.prices = objects
+            }
+        }
     }
 
 }
@@ -63,14 +88,14 @@ extension PricesTableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.product.prices.count
+        return self.prices.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Identifiers.TableCells.ProductType, forIndexPath: indexPath) as! ProductTypeTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(Identifiers.TableCells.Price, forIndexPath: indexPath) as! PriceTableViewCell
         
         // configure cell
-        //cell.productType = self.productTypes[indexPath.row]
+        cell.price = self.prices[indexPath.row]
         
         return cell
     }

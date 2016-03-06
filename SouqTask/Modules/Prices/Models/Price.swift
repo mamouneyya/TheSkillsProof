@@ -9,9 +9,12 @@
 import UIKit
 import ObjectMapper
 
-class Price: Root {
+class Price: Root, Storable {
     
     // MARK: - Vars
+    
+    /// DB primary key. Without specifying it, SwiftyDB was unable to create the DB.
+    var id = NSTimeIntervalSince1970 + Double(arc4random_uniform(999))
     
     var value = 0
     var currency = "$"
@@ -20,11 +23,12 @@ class Price: Root {
         return "\(value) \(currency)"
     }
     
-    var trackedDate = ""
+    var productId: String?
+    var trackedDate = NSDate()
     
     // MARK: - Lifecycle
     
-    override init() {
+    override required init() {
         super.init()
     }
     
@@ -43,4 +47,11 @@ class Price: Root {
         super.init(map)
     }
     
+}
+
+extension Price: PrimaryKeys {
+    /// Class object's primary key for SwiftyDB
+    class func primaryKeys() -> Set<String> {
+        return ["id"]
+    }
 }

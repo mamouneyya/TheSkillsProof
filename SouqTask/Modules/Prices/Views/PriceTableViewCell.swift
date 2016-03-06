@@ -17,6 +17,7 @@ class PriceTableViewCell: BaseTableViewCell {
     
     // MARK: - Vars
     
+    /// Model data object, to fill cell subviews from.
     var price = Price() {
         didSet {
             updateViews(price: price)
@@ -25,9 +26,14 @@ class PriceTableViewCell: BaseTableViewCell {
     
     // MARK: - Update Views
     
+    /**
+        Fills cell's subviews using price model.
+        
+        - Parameter price: The price data model to use.
+    */
     private func updateViews(price price: Price) {
         self.priceLabel.text = price.friendlyTitle
-        self.priceLabel.text = price.trackedDate
+        self.dateLabel.text = price.trackedDate.userFriendlyDateString()
     }
 
 }
