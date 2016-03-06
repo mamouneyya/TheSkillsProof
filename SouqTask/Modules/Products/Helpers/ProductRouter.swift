@@ -12,7 +12,6 @@ extension Product {
 
     enum Request: RequestConfigurations {
         
-        case getProductTypes(offset: Int)
         case getProducts(productTypeIds: [String], offset: Int)
         case getProductsOfSelectedTypes(offset: Int)
         case getProduct(productId: String)
@@ -26,15 +25,6 @@ extension Product {
             var parameters: [String: AnyObject]?
             
             switch self {
-            case .getProductTypes(let offset):
-                path = "products/types"
-                parameters = [
-                    "page"     : offset,
-                    "show"     : RouterConfigurations.resultsPerPage,
-                    "language" : RouterConfigurations.language,
-                    "format"   : RouterConfigurations.format
-                ]
-                
             case .getProducts(let productTypeIds, let offset):
                 path = "products"
                 parameters = [
@@ -75,8 +65,7 @@ extension Product {
         
         var method: Alamofire.Method {
             switch self {
-            case .getProductTypes,
-                 .getProducts,
+            case .getProducts,
                  .getProductsOfSelectedTypes,
                  .getProduct:
                 return .GET
@@ -98,8 +87,7 @@ extension Product {
         
         var encoding: ParameterEncoding {
             switch self {
-            case .getProductTypes,
-                 .getProducts,
+            case .getProducts,
                  .getProductsOfSelectedTypes,
                  .getProduct:
                 return .URL
@@ -115,8 +103,7 @@ extension Product {
         
         var needsAuthentication: Bool {
             switch self {
-            case .getProductTypes,
-                 .getProducts,
+            case .getProducts,
                  .getProductsOfSelectedTypes,
                  .getProduct:
                 return false

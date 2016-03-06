@@ -106,7 +106,7 @@ class ProductTypesViewController: BaseViewController {
             print("getProductTypes(offset: \(offset))")
         #endif
         
-        Networker.request(Product.Request.getProductTypes(offset: offset)).responseArray {
+        Networker.request(ProductType.Request.getProductTypes(offset: offset)).responseArray {
             (response: Response<[ProductType], NSError>) -> Void in
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
