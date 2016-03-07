@@ -117,7 +117,7 @@ class TutorialViewController: BaseViewController {
     */
     private func goToFail() {
         let failController = StoryboardScene.Main.instanciateFail()
-        self.navigationController?.pushViewController(failController, animated: true)
+        AppDelegate.sharedAppDelegate()?.changeRootViewController(failController)
     }
     
     /**
@@ -126,8 +126,9 @@ class TutorialViewController: BaseViewController {
     private func goToNextStep() {
         let nextStepController = StoryboardScene.Main.instanciateTutorial()
             nextStepController.activeStep = self.activeStep.nextStep
-        
-        self.navigationController?.pushViewController(nextStepController, animated: true)
+        let nextStepInNavigationController = UINavigationController(rootViewController: nextStepController)
+
+        AppDelegate.sharedAppDelegate()?.changeRootViewController(nextStepInNavigationController)
     }
 
 }

@@ -7,8 +7,10 @@
 //
 //  NOTE:       Honestly, I doubt this is working properly, but I am not able to test it since the site was
 //              down for a while.
+//
 //  UPDATE:     It fails actually at the last step, getting the token using returned code. I coming to think
 //              it because of some hardcoded values in the library.
+//
 //  UPDATE2:    Actually yeah, In OAuth2CodeGrant it uses client_id & client_secret while Souq seems to use
 //              app_id & app_secret. Could be the reason..
 
