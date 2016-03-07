@@ -5,6 +5,8 @@
 //  Created by Ma'moun Diraneyya on 2/27/16.
 //  Copyright © 2016 Mamouneyya. All rights reserved.
 //
+//  NOTE:   Honestly, I doubt this is working properly, but I am not able to test it since the site was
+//          down for a while.
 
 import UIKit
 import p2_OAuth2
