@@ -8,6 +8,17 @@
 
 import UIKit
 
+/**
+    Available configurations set.
+
+    - InitialSetup: Initial app setup screen.
+    - Settings: Edit selected types setting screen.
+*/
+enum ProductTypesControllerConfigurationsSet {
+    case InitialSetup
+    case Settings
+}
+
 class ProductTypesViewController: BaseViewController {
 
     // MARK: - Outlets
@@ -15,8 +26,15 @@ class ProductTypesViewController: BaseViewController {
     /// Product types list's table view.
     @IBOutlet weak var tableView: UITableView!
     
-    /// Next Button.
-    @IBOutlet weak var nextButton: UIButton!
+    /// Save Button.
+    @IBOutlet weak var saveButton: UIButton!
+
+    /// Save Button height constraint.
+    @IBOutlet weak var saveButtonHeightConstraint: NSLayoutConstraint!
+    
+    // MARK: - Public Vars
+    
+    var configurationsSet = ProductTypesControllerConfigurationsSet.InitialSetup
     
     // MARK: - Private Vars
     
@@ -31,11 +49,11 @@ class ProductTypesViewController: BaseViewController {
     // is to delete unselected items from it effeiently, without
     // an array iteration
     /// User selected product types as dictionary: [Type ID: Type].
-    private var selectedProductTypesMap = [String: ProductType]()
+    private var selectedProductTypeIdsMap = [String: Bool]()
 
-    /// More intuitive accessor for selected product types.
-    private var selectedProductTypes: [ProductType] {
-        return [ProductType](selectedProductTypesMap.values)
+    /// More intuitive accessor for selected product types (Read-Only).
+    private var selectedProductTypeIds: [String] {
+        return [String](selectedProductTypeIdsMap.keys)
     }
 
     ///////////////////
@@ -81,6 +99,7 @@ class ProductTypesViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        initialize()
         getProductTypes()
     }
 
@@ -89,6 +108,13 @@ class ProductTypesViewController: BaseViewController {
     }
 
     // MARK: - Private Methods
+    
+    // MARK: - Initialize
+    
+    private func initialize() {
+        // update views for the selected configurations set
+        updateConfigurationsSet(self.configurationsSet)
+    }
     
     // MARK: - API
     
@@ -100,12 +126,10 @@ class ProductTypesViewController: BaseViewController {
     private func getProductTypes(offset: Int = 1) {
         if offset > 1 {
             self.loadingMore = true
+        } else {
+            Utility.showLoadingHUD(self.view)
         }
-        
-        #if DEBUG
-            print("getProductTypes(offset: \(offset))")
-        #endif
-        
+
         Networker.request(ProductType.Request.getProductTypes(offset: offset)).responseArray {
             (response: Response<[ProductType], NSError>) -> Void in
             
@@ -116,6 +140,8 @@ class ProductTypesViewController: BaseViewController {
                         self.productTypes.removeAll()
                         self.productTypes = data
 
+                        Utility.hideLoadingHUD(self.view)
+                        
                         self.reloadTableView()
                         
                     } else {
@@ -150,6 +176,38 @@ class ProductTypesViewController: BaseViewController {
     }
     
     // MARK: - Helpers
+    
+    /**
+        Configure views according to the passed configurations set.
+        
+        - Parameter configurationsSet: The configurations set to use.
+    */
+    private func updateConfigurationsSet(configurationsSet: ProductTypesControllerConfigurationsSet) {
+        switch configurationsSet {
+        case .InitialSetup:
+            // initially hide save button, until we select at least one type
+            hideSaveButtonIfNoSelection(false)
+            
+            self.saveButton.setTitle("Next", forState: .Normal)
+            self.saveButton.setTitle("Next", forState: .Selected)
+
+            self.navigationItem.leftBarButtonItem = nil
+            
+        case .Settings:
+            self.saveButton.setTitle("Save", forState: .Normal)
+            self.saveButton.setTitle("Save", forState: .Selected)
+            
+            self.selectedProductTypeIdsMap.removeAll()
+            
+            if let savedTypeIds = Defaults[.UserProductTypeIds] {
+                for savedTypeId in savedTypeIds {
+                    self.selectedProductTypeIdsMap[savedTypeId] = true
+                }
+            }
+            
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage.Asset.Close.image, style: .Plain, target: self, action: "closeBarButtonTapped:")
+        }
+    }
     
     /**
         TODO    Before reload table view, this function shoud check for cases like if we have no items to display
@@ -191,9 +249,9 @@ class ProductTypesViewController: BaseViewController {
     private func updateProductTypeInSelection(productType: ProductType, operation: UpdateSelectionOperation) {
         switch operation {
         case .Select:
-            self.selectedProductTypesMap[productType.id] = productType
+            self.selectedProductTypeIdsMap[productType.id] = true
         case .Deselect:
-            self.selectedProductTypesMap.removeValueForKey(productType.id)
+            self.selectedProductTypeIdsMap.removeValueForKey(productType.id)
         }
     }
 
@@ -201,24 +259,67 @@ class ProductTypesViewController: BaseViewController {
         Save / Update user product types on disk. (for now they're saved in UserDefaults.)
     */
     private func saveSelectedProductTypes() {
-        func extractedProductTypeIds(productTypes: [ProductType]) -> [String] {
-            var productTypeIds = [String]()
-            for productType in productTypes {
-                productTypeIds.append(productType.id)
+        Defaults[.UserProductTypeIds] = self.selectedProductTypeIds
+    }
+    
+    /**
+        Returns whether the passed product type is already saved in our records.
+        
+        - Parameter productType: Product type to look for.
+
+        - Returns: Whether the passed product type is already saved in our records.
+    */
+    private func savedProductType(productType: ProductType) -> Bool {
+        if let savedTypeIds = Defaults[.UserProductTypeIds] {
+            for savedTypeId in savedTypeIds {
+                if savedTypeId == productType.id {
+                    return true
+                }
             }
-            
-            return productTypeIds
         }
         
-        Defaults[.UserProductTypeIds] = extractedProductTypeIds(self.selectedProductTypes)
+        return false
+    }
+    
+    /**
+        Show save button if user selected at least one item. Hide otherwise.
+        
+        - Parameter animated: If the show / hiding should be made with animation.
+    */
+    private func hideSaveButtonIfNoSelection(animated: Bool = true) {
+        let show = (self.tableView.indexPathsForSelectedRows?.count ?? 0) > 0
+        let finalHeight: CGFloat = show ? 50.0 : 0.0
+        
+        // if already got the final state, do nothing
+        if self.saveButtonHeightConstraint.constant == finalHeight {
+            return
+        }
+        
+        self.view.layoutIfNeeded()
+        
+        self.saveButtonHeightConstraint.constant = finalHeight
+        
+        UIView.animateWithDuration(animated ? 0.55 : 0.0, delay: 0.0, usingSpringWithDamping: 0.45,
+            initialSpringVelocity: 0.0, options: .CurveEaseInOut, animations: { () -> Void in
+                self.view.layoutIfNeeded()
+            }, completion: nil)
     }
     
     // MARK: - Actions
     
-    @IBAction func nextButtonTapped(sender: AnyObject) {
+    @IBAction func saveButtonTapped(sender: UIButton) {
         saveSelectedProductTypes()
-        Defaults[.InitialSetupDone] = true
-        goToHome()
+        
+        if self.configurationsSet == .InitialSetup {
+            Defaults[.InitialSetupDone] = true
+            goToHome()
+        } else {
+            dismiss()
+        }
+    }
+    
+    @IBAction func closeBarButtonTapped(sender: UIBarButtonItem) {
+        dismiss()
     }
     
     // MARK: - Navigation
@@ -232,6 +333,13 @@ class ProductTypesViewController: BaseViewController {
     */
     func goToHome() {
         AppDelegate.sharedAppDelegate()?.changeRootToHome(animated: true, fancy: true)
+    }
+    
+    /**
+        Dismisses the view controller when presented modally.
+    */
+    func dismiss() {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 
 }
@@ -254,6 +362,13 @@ extension ProductTypesViewController: UITableViewDataSource {
         // configure cell
         cell.productType = self.productTypes[indexPath.row]
         
+        // initially select saved types
+        let productId = self.productTypes[indexPath.row].id
+        if self.selectedProductTypeIdsMap[productId] == true {
+            tableView.selectRowAtIndexPath(indexPath, animated: false, scrollPosition: .None)
+            tableView.delegate?.tableView?(tableView, didSelectRowAtIndexPath: indexPath)
+        }
+        
         return cell
     }
     
@@ -262,13 +377,15 @@ extension ProductTypesViewController: UITableViewDataSource {
 // MARK: - Table View Delegate
 
 extension ProductTypesViewController: UITableViewDelegate {
- 
+
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         addProductTypeToSelection(self.productTypes[indexPath.row])
+        hideSaveButtonIfNoSelection()
     }
 
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         removeProductTypeFromSelection(self.productTypes[indexPath.row])
+        hideSaveButtonIfNoSelection()
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {

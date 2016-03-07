@@ -399,8 +399,8 @@
 				B96B314E1C8718A6003CEAD3 /* Router.swift */,
 				B9DECC201C884701002C79EF /* Serializer.swift */,
 				B9DECC221C88A111002C79EF /* Error.swift */,
-				B9013E791C8BFA2900EABCB0 /* BackgroundFetcher.swift */,
 				B96B314F1C8718A6003CEAD3 /* Utility.swift */,
+				B9013E791C8BFA2900EABCB0 /* BackgroundFetcher.swift */,
 				B96B314B1C8718A6003CEAD3 /* Extensions */,
 			);
 			path = Helpers;

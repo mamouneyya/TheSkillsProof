@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wly-yz-Quo">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -51,7 +51,14 @@
                             <outlet property="delegate" destination="t3B-K9-kXY" id="JpB-Cj-wh8"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Products" id="2pi-2W-KqJ"/>
+                    <navigationItem key="navigationItem" title="Products" id="2pi-2W-KqJ">
+                        <barButtonItem key="rightBarButtonItem" image="settings" id="AvS-Aa-BvM">
+                            <color key="tintColor" red="0.0" green="0.54117647058823526" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="settingsTapped:" destination="t3B-K9-kXY" id="No0-ev-Sza"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IJx-f7-ER4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -310,7 +317,17 @@
                     <view key="view" contentMode="scaleToFill" id="dBV-wd-F4t">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.8862745098" green="0.74117647060000003" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch" translatesAutoresizingMaskIntoConstraints="NO" id="Gbi-po-9XN">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="dnR-rg-s5u" firstAttribute="top" secondItem="Gbi-po-9XN" secondAttribute="bottom" id="PLR-5P-qmQ"/>
+                            <constraint firstAttribute="trailing" secondItem="Gbi-po-9XN" secondAttribute="trailing" id="XdT-bd-WQb"/>
+                            <constraint firstItem="Gbi-po-9XN" firstAttribute="leading" secondItem="dBV-wd-F4t" secondAttribute="leading" id="aYv-CC-ka2"/>
+                            <constraint firstItem="Gbi-po-9XN" firstAttribute="top" secondItem="dBV-wd-F4t" secondAttribute="top" id="eqt-21-rCn"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="OeW-RE-dRT"/>
                 </viewController>
@@ -492,7 +509,7 @@
                                 </constraints>
                                 <state key="normal" title="Next"/>
                                 <connections>
-                                    <action selector="nextButtonTapped:" destination="8Uj-JT-lbI" eventType="touchUpInside" id="vLk-BS-rPV"/>
+                                    <action selector="saveButtonTapped:" destination="8Uj-JT-lbI" eventType="touchUpInside" id="bzG-qh-3RO"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -509,7 +526,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Product Types" id="JSj-at-XYN"/>
                     <connections>
-                        <outlet property="nextButton" destination="wGm-x8-3n0" id="ifx-jh-Wtf"/>
+                        <outlet property="saveButton" destination="wGm-x8-3n0" id="xqo-BR-aGK"/>
+                        <outlet property="saveButtonHeightConstraint" destination="5ei-Lt-K6s" id="pRk-75-opD"/>
                         <outlet property="tableView" destination="1w1-h8-BMl" id="vKj-t2-EoE"/>
                     </connections>
                 </viewController>
@@ -558,7 +576,7 @@
         <!--Navigation Controller-->
         <scene sceneID="PBH-sb-qZp">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wly-yz-Quo" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="wly-yz-Quo" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="TTA-vA-LER">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -649,6 +667,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="launch" width="375" height="667"/>
+        <image name="settings" width="22" height="22"/>
         <image name="tabbar-products" width="21" height="17"/>
         <image name="tabbar-products-selected" width="21" height="17"/>
     </resources>

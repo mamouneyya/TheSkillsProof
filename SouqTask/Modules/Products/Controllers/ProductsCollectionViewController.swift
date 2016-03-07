@@ -24,4 +24,21 @@ class ProductsCollectionViewController: BaseCollectionViewController {
         self.collectionView?.reloadData()
     }
 
+    // MARK: - Actions
+    
+    @IBAction func settingsTapped(sender: UIBarButtonItem) {
+        goToProductTypes()
+    }
+    
+    // MARK: - Navigation
+    
+    func goToProductTypes() {
+        let productTypesController = StoryboardScene.Main.instanciateProductTypes()
+            productTypesController.configurationsSet = .Settings
+        
+        let productTypesNavigationController = UINavigationController(rootViewController: productTypesController)
+        
+        self.presentViewController(productTypesNavigationController, animated: true, completion: nil)
+    }
+    
 }

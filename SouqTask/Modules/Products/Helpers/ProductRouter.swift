@@ -38,7 +38,7 @@ extension Product {
                 ]
                 
             case .getProductsOfSelectedTypes(let offset):
-                let UserProductTypeIds = Defaults[.UserProductTypeIds]!
+                let UserProductTypeIds = Defaults[.UserProductTypeIds] ?? [String]()
                 let result = Product.Request.getProducts(productTypeIds: UserProductTypeIds, offset: offset).result
                 path       = result.path
                 parameters = result.parameters
