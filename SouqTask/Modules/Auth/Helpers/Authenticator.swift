@@ -36,9 +36,11 @@ class Authenticator {
     }
     
     // MARK: - Private Vars
-    
+
+    /// OAuth2 manager.
     private var oauth2: OAuth2CodeGrant
     
+    /// OAuth2 settings.
     private let settings: OAuth2JSON = [
         "client_id"     : OAuthSettings.ClientId,
         "client_secret" : OAuthSettings.ClientSecret,
@@ -54,8 +56,8 @@ class Authenticator {
 
     private init() {
         oauth2 = OAuth2CodeGrant(settings: settings)
-        oauth2.authConfig.authorizeEmbedded = true
-        oauth2.authConfig.authorizeContext = UIApplication.sharedApplication().keyWindow?.rootViewController
+        oauth2.authConfig.authorizeEmbedded = false
+        //oauth2.authConfig.authorizeContext = UIApplication.sharedApplication().keyWindow?.rootViewController
         oauth2.authConfig.secretInBody = true
         
         #if DEBUG

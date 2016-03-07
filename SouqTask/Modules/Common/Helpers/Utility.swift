@@ -16,6 +16,16 @@ class Utility {
     // singleton implementation
     static let sharedInstance = Utility()
     
+    /// If the UI orientation is currently landscape.
+    static var deviceOrientationIsLandscape: Bool {
+        return UIApplication.sharedApplication().statusBarOrientation.isLandscape
+    }
+    
+    /// If the UI orientation is currently portrait.
+    static var deviceOrientationIsPortrait: Bool {
+        return UIApplication.sharedApplication().statusBarOrientation.isPortrait
+    }
+    
     // MARK: Lifecycle
     
     //This prevents others from using the default '()' initializer for this class.
@@ -99,26 +109,6 @@ class Utility {
         } else {
             UIApplication.sharedApplication().windows[0].rootViewController?.presentViewController(alert, animated:true, completion:nil)
         }
-    }
-    
-    // MARK: - Helpers
-    
-    /**
-        Simple wrapper to determine if device orientation is landscape.
-
-        - Returns: If device orientation is landscape.
-    */
-    class func deviceOrientationIsLandscape() -> Bool {
-        return UIDevice.currentDevice().orientation.isLandscape
-    }
-    
-    /**
-        Simple wrapper to determine if device orientation is portrait.
-
-        - Returns: If device orientation is portrait.
-    */
-    class func deviceOrientationIsPortrait() -> Bool {
-        return UIDevice.currentDevice().orientation.isPortrait
     }
     
 }

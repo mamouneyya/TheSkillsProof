@@ -311,7 +311,7 @@ class ProductTypesViewController: BaseViewController {
         saveSelectedProductTypes()
         
         if self.configurationsSet == .InitialSetup {
-            Defaults[.InitialSetupDone] = true
+            Defaults[.InitialTutorialDone] = true
             goToHome()
         } else {
             dismiss()
@@ -331,14 +331,14 @@ class ProductTypesViewController: BaseViewController {
     /**
         Navigate to home view controller.
     */
-    func goToHome() {
+    private func goToHome() {
         AppDelegate.sharedAppDelegate()?.changeRootToHome(animated: true, fancy: true)
     }
     
     /**
         Dismisses the view controller when presented modally.
     */
-    func dismiss() {
+    private func dismiss() {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 

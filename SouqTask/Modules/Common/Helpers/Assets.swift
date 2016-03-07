@@ -47,6 +47,11 @@ struct StoryboardScene {
     enum Main: String, StoryboardSceneType {
         static let storyboardName = "Main"
         
+        case FailScene = "Fail"
+        static func instanciateFail() -> FailViewController {
+            return StoryboardScene.Main.FailScene.viewController() as! FailViewController
+        }
+        
         case FavoritesScene = "Favorites"
         static func instanciateFavorites() -> FavoritesCollectionViewController {
             return StoryboardScene.Main.FavoritesScene.viewController() as! FavoritesCollectionViewController
@@ -55,11 +60,6 @@ struct StoryboardScene {
         case FavoritesNavigationScene = "FavoritesNavigation"
         static func instanciateFavoritesNavigation() -> UINavigationController {
             return StoryboardScene.Main.FavoritesNavigationScene.viewController() as! UINavigationController
-        }
-        
-        case InitialSetupNavigationScene = "InitialSetupNavigation"
-        static func instanciateInitialSetupNavigation() -> UINavigationController {
-            return StoryboardScene.Main.InitialSetupNavigationScene.viewController() as! UINavigationController
         }
         
         case LoginScene = "Login"
@@ -100,6 +100,16 @@ struct StoryboardScene {
         case StartupScene = "Startup"
         static func instanciateStartup() -> StartupViewController {
             return StoryboardScene.Main.StartupScene.viewController() as! StartupViewController
+        }
+        
+        case TutorialScene = "Tutorial"
+        static func instanciateTutorial() -> TutorialViewController {
+            return StoryboardScene.Main.TutorialScene.viewController() as! TutorialViewController
+        }
+        
+        case TutorialNavigationScene = "TutorialNavigation"
+        static func instanciateTutorialNavigation() -> UINavigationController {
+            return StoryboardScene.Main.TutorialNavigationScene.viewController() as! UINavigationController
         }
     }
 }

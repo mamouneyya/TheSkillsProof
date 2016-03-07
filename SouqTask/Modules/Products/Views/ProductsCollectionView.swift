@@ -455,7 +455,7 @@ extension ProductsCollectionView: UICollectionViewDelegate, UICollectionViewDele
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         let margin: CGFloat = 10.0
-        let columns: CGFloat = Utility.deviceOrientationIsPortrait() ? 2.0 : 3.0
+        let columns: CGFloat = Utility.deviceOrientationIsPortrait ? 2.0 : 3.0
 
         var width: CGFloat = 0.0
         var height: CGFloat?

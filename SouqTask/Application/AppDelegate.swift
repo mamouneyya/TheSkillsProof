@@ -20,10 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         registerForLocalNotifications()
         setupAppearance()
         setupBackgroundFetching()
-        
-        if Defaults[.InitialSetupDone] == false {
-            changeRootToInitialSetup()
-        }
     
         return true
     }
@@ -182,7 +178,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          - Parameter animated:  Whether the change should be animated.
          - Parameter fancy:     If animated, passing true to this parameter will animate the controller in a fancy way.
     */
-    func changeRootToHome(animated animated: Bool = true, fancy: Bool = false) {
+    func changeRootToHome(animated animated: Bool = true, fancy: Bool = true) {
         changeRootViewController(StoryboardScene.Main.instanciateMain(), animated: animated, fancy: fancy)
     }
 
@@ -192,8 +188,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          - Parameter animated:  Whether the change should be animated.
          - Parameter fancy:     If animated, passing true to this parameter will animate the controller in a fancy way.
     */
-    func changeRootToInitialSetup(animated animated: Bool = true, fancy: Bool = false) {
-        changeRootViewController(StoryboardScene.Main.instanciateInitialSetupNavigation(), animated: animated, fancy: fancy)
+    func changeRootToInitialSetup(animated animated: Bool = true, fancy: Bool = true) {
+        changeRootViewController(StoryboardScene.Main.instanciateTutorialNavigation(), animated: animated, fancy: fancy)
     }
 
 }

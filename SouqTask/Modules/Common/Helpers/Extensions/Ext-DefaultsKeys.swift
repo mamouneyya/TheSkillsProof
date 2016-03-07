@@ -9,8 +9,9 @@
 import UIKit
 
 extension DefaultsKeys {
-    /// Whether initial product types selection was done.
-    static let InitialSetupDone   = DefaultsKey<Bool>("initialSetupDone")
+    /// If user passes first app tutorial.
+    static let InitialTutorialDone = DefaultsKey<Bool>("initialTutorialDone")
+    
     /// User selected product types, chosen in initial setup.
-    static let UserProductTypeIds = DefaultsKey<[String]?>("userProductTypeIds")
+    static let UserProductTypeIds  = DefaultsKey<[String]?>("userProductTypeIds")
 }

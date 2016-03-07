@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireNetworkActivityIndicator
 
 class Networker {
 
@@ -42,7 +43,8 @@ class Networker {
     // MARK: - Lifecycle
     
     private init() {
-        
+        // show indicator on device's status bar for app network activities
+        NetworkActivityIndicatorManager.sharedManager.isEnabled = true
     }
     
     // MARK: - Requests
