@@ -54,9 +54,6 @@ class PricesTableViewController: BaseTableViewController {
         PricesManager.asyncGetAllPricesForProduct(productId) { (objects, error) -> () in
             guard error == nil else { return }
             
-            print(objects)
-            print(error)
-            
             if let objects = objects {
                 self.prices = objects
             }

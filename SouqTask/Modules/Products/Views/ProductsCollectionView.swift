@@ -278,9 +278,8 @@ class ProductsCollectionView: UICollectionView {
                         }
                     }
 
-                case .Failure(let error):
-                    print("Failure")
-                    print(error)
+                case .Failure(let _):
+                    break
                 }
         }
     }

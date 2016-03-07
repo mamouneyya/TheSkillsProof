@@ -68,11 +68,11 @@ class BackgroundFetcher {
             switch response.result {
             case .Success(let product):
                 product.updateTrackedPrices() { (updated) -> () in
-                    print("Item updated: \(updated)")
+                    //print("Item updated: \(updated)")
                     completion?(success: true, updated: updated)
                 }
             case .Failure(_):
-                print("Item update failed!: \(productId)")
+                //print("Item update failed!: \(productId)")
                 completion?(success: false, updated: false)
             }
         }
